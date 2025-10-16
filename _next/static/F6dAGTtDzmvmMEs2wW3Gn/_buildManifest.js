@@ -1,13 +1,13 @@
 self.__BUILD_MANIFEST = {
   "/_error": [
-    "./static/chunks/29f9a0e2db0efc21.js"
+    "./static/chunks/a7f2fb4e51902313.js"
   ],
   "__rewrites": {
     "afterFiles": [],
     "beforeFiles": [
       {
-        "source": "/panchen.github.io//_next/:path+",
-        "destination": "/panchen.github.io/_next/:path+"
+        "source": "/panchan.github.io//_next/:path+",
+        "destination": "/panchan.github.io/_next/:path+"
       }
     ],
     "fallback": []
