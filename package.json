@@ -8,6 +8,7 @@
     "start": "next start",
     "ssg": "npx serve@latest out",
     "lint": "eslint",
+    "preview": "pnpm run build && pnpm run ssg",
     "deploy": "NEXT_PUBLIC_REPO=panchan.github.io next build --turbopack && touch ./out/.nojekyll && gh-pages -d out"
   },
   "dependencies": {

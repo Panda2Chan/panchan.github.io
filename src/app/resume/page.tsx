@@ -5,7 +5,8 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import rehypeHighlight from 'rehype-highlight'
 import 'highlight.js/styles/atom-one-dark.css'
-
+import UserAvatar from '../user.png'
+import Image from 'next/image'
 const markdown = `
 
 --- 
@@ -118,7 +119,7 @@ export default function Resume() {
   return (
     <div className="max-w-3xl prose my-10 rounded-md  mx-auto p-6 bg-white">
       <div className='flex flex-col items-center justify-center gap-2'>
-        <img className='w-24 h-24 rounded-full mx-auto my-4' src="/user.png" alt="" />
+        <Image className='w-24 h-24 rounded-full mx-auto my-4' src={UserAvatar} alt="" />
         <span className='text-4xl font-bold'>
           👋 PanChan - 陈宣宏
         </span>

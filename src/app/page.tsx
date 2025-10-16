@@ -1,13 +1,12 @@
 'use client'
 import { Particles } from "@/components/ui/particles"
 import { useRouter } from "next/navigation"
-import { useState } from "react"
-
+import UserAvatar from './user.png'
+import Image from "next/image"
 
 
 export default function Home() {
   const router = useRouter();
-  const [color, setColor] = useState("#000")
 
 
   const handleBtnClick = () => {
@@ -17,7 +16,7 @@ export default function Home() {
     <div className="bg-background relative flex h-screen w-full flex-col items-center justify-center overflow-hidden rounded-lg border">
       <div className="max-w-3xl px-5">
         <div className="flex  flex-col items-center justify-center gap-5 " >
-          <img className="w-30 h-30 rounded-full" src="/user.png" alt="" />
+          <Image className="w-30 h-30 rounded-full" src={UserAvatar} alt="" />
           <div className="flex flex-col items-center justify-center text-center leading-none font-semibold whitespace-pre-wrap">
             <span className="pointer-events-none z-10  mt-10 text-4xl  ">👋 嗨，欢迎来到我的主页</span>
             <span className="pointer-events-none z-10  mt-10 text-xl "  >
@@ -36,7 +35,7 @@ export default function Home() {
         className="absolute inset-0 z-0"
         quantity={100}
         ease={80}
-        color={color}
+        color="#000"
         refresh
       />
 
