@@ -7,12 +7,15 @@
     "build": "next build --turbopack",
     "start": "next start",
     "ssg": "npx serve@latest out",
-    "lint": "eslint"
+    "lint": "eslint",
+    "predeploy": "next build --turbopack",
+    "deploy": "gh-pages -d out"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.19",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "gh-pages": "^6.3.0",
     "highlight.js": "^11.11.1",
     "install": "^0.13.0",
     "lucide-react": "^0.545.0",
