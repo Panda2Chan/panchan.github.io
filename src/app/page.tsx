@@ -32,12 +32,14 @@ export default function Home() {
               找到我的联系方式，欢迎随时联系！🙏
             </span>
           </div>
-          <button className="z-10 mt-5 px-4 py-2 bg-primary cursor-pointer text-primary-foreground rounded-md" onClick={handleBtnClick}>
-            我的简历 ➡️
-          </button>
-          <button className="z-10 mt-5 px-4 py-2 bg-primary cursor-pointer text-primary-foreground rounded-md" onClick={handleBlogClick}>
-            近日随笔 ➡️
-          </button>
+          <div className="flex gap-5">
+            <button className="z-10 mt-5 px-4 py-2 bg-primary cursor-pointer text-primary-foreground rounded-md" onClick={handleBlogClick}>
+              近日随笔 ❤️
+            </button>
+            <button className="z-10 mt-5 px-4 py-2 bg-primary cursor-pointer text-primary-foreground rounded-md" onClick={handleBtnClick}>
+              我的简历 📖
+            </button>
+          </div>
 
 
         </div>
