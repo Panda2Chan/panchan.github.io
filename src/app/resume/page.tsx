@@ -16,7 +16,7 @@ const markdown = `
 - 📍 成都, 中国
 - 📅 工作时长：5年
 - 💼 成都星迈吉科技有限公司
-- 📞 +86 132-8126-0713
+- 📞 +86 13281260713
 - 📮 [a13281260713@gmail.com](mailto:a13281260713@gmail.com) | [812783357@qq.com](mailto:812783357@qq.com)
 - 💻: [https://github.com/Panda2Chan](https://github.com/Panda2Chan)  
 ---
@@ -33,7 +33,7 @@ const markdown = `
 - **前端框架**: Vue2, Vue3, React, Next.js, React Native
 - **UI & 样式**: Tailwind CSS, shadcn/ui, Ant Design, Element UI, Arco Design, VXE-Table  
 - **语言 & 工具**: TypeScript, JavaScript(ES6+), HTML5, CSS3, Git, npm/pnpm, Webpack/Vite  
-- **后端 & 数据库**: Node.js, Golang, NestJS, MongoDB, MySQL, Redis, REST API  
+- **后端 & 数据库**: Node.js, Golang, NextJS, MongoDB, MySQL, Redis, REST API  
 - **可视化**: ECharts, D3.js, Canvas, Pixi.js  
 - **效率提升**: Cursor, Warp, Grok, v0, ChatGpt
 - **其他**: Selenium, Postman, Jenkins
@@ -74,7 +74,7 @@ const markdown = `
   - 业务页面的开发，包括用户登录注册、资产管理、订单交易、记录查询等核心功能  
 
 ### 推广页
-- **技术栈**: NestJS + Tailwind CSS  
+- **技术栈**: NextJS + Tailwind CSS  
 - **功能**: 品牌形象推广，游戏引流，活动宣传
 - **贡献**: 
   - 响应式布局设计
@@ -107,7 +107,7 @@ const markdown = `
 - **功能**: 撮合交易后台，提供订单撮合、交易记录查询等功能  
 
 ### Binance Alpha Dog
-- **技术栈**: NestJS + Tailwind CSS 
+- **技术栈**: NextJS + Tailwind CSS 
 - **功能**: 基于 Binance API 实现的币安 Alpha 活动积分计算器，提供用户积分计算、交易记录查询、活动规则等功能
 
 
