@@ -15,7 +15,7 @@ const Blog: FC<{ data: IBlog }> = ({ data }) => {
   const { title, date, location, markdown } = data;
   return (
     <div>
-      <div className='flex flex-col items-center justify-center gap-5'>
+      <div className='flex flex-col items-center justify-center gap-5 mb-10'>
         <span className='text-4xl font-bold'>
           {title}
         </span>

@@ -12,7 +12,7 @@ export default function Resume() {
         blogs.map((blog, blogIndex) => (
           <div key={blogIndex} className="mb-6 border-b pb-4">
             <h2 className="text-xl font-semibold mb-2">
-              <Link href={`/blog/detail/${blogIndex}`} className="text-blue-500 hover:underline">
+              <Link href={`/blog/detail/${blogIndex}`} className="no-underline underline-offset-5 hover:underline">
                 {blog.title}
               </Link>
             </h2>

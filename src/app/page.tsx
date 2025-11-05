@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation"
 import UserAvatar from './user.png'
 import Image from "next/image"
 import { Highlighter } from "@/components/ui/highlighter"
+import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button"
 
 export default function Home() {
   const router = useRouter();
@@ -32,13 +33,14 @@ export default function Home() {
               找到我的联系方式，欢迎随时联系！🙏
             </span>
           </div>
-          <div className="flex gap-5">
-            <button className="z-10 mt-5 px-4 py-2 bg-primary cursor-pointer text-primary-foreground rounded-md" onClick={handleBlogClick}>
-              近日随笔 ❤️
-            </button>
-            <button className="z-10 mt-5 px-4 py-2 bg-primary cursor-pointer text-primary-foreground rounded-md" onClick={handleBtnClick}>
-              我的简历 📖
-            </button>
+          <div className="flex gap-5 mt-10">
+            <InteractiveHoverButton onClick={handleBlogClick}>
+              近日随笔
+            </InteractiveHoverButton>
+
+            <InteractiveHoverButton onClick={handleBtnClick}>
+              我的简历
+            </InteractiveHoverButton>
           </div>
 
 
