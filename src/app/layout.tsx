@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title: "PanChan - Resume",
   description: "Resume of PanChan",
   icons: {
-    icon: "/user.png",
+    icon: process.env.NEXT_PUBLIC_REPO ? `/${process.env.NEXT_PUBLIC_REPO}/user.png` : "/user.png",
   },
 };
 
