@@ -17,8 +17,8 @@ export function generateStaticParams() {
 }
 
 
-export default function BlogDetail({ params }: { params: IBlogDetailParams }) {
-  const { id: blogIndex } = params
+export default async function BlogDetail({ params }: { params: IBlogDetailParams }) {
+  const { id: blogIndex } = await params
   const blog = blogs[Number(blogIndex)]
   if (!blog) {
     return (
