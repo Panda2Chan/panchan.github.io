@@ -10,7 +10,6 @@ import Image from 'next/image'
 import BackHome from '@/components/page/backHome'
 
 const markdown = `
-
 --- 
 ### Web 前端开发工程师
 - 📍 成都, 中国
@@ -24,6 +23,8 @@ const markdown = `
 ## 📝 个人简介
 - 拥有多年**Web 前端开发经验**，精通 Vue2 / Vue3 / React，擅长后台管理系统开发与维护，熟悉前端项目架构设计及性能优化。熟练使用 TypeScript、Next.js、Vue、React 等技术栈，能够独立完成前后端联调和项目交付
 - 深耕**游戏行业**，熟悉海内外游戏相关业务
+- 推崇 **vibe coding**：以愉悦、直觉式编码体验为核心，善用 AI 工具（Cursor、v0、Grok）快速迭代
+- ChatGpt Plus、Cursor 等 AI 工具付费用户、重度使用者，能够快速迭代新功能，保持代码质量，擅长**敏捷开发**
 - 有多年炒币经验及BSC社区建设经验
 
 ---
