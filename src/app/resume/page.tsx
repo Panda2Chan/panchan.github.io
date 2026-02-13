@@ -34,9 +34,9 @@ const markdown = `
 - **前端框架**: Vue2, Vue3, React, Next.js, React Native
 - **UI & 样式**: Tailwind CSS, shadcn/ui, Ant Design, Element UI, Arco Design, VXE-Table  
 - **语言 & 工具**: TypeScript, JavaScript(ES6+), HTML5, CSS3, Git, npm/pnpm, Webpack/Vite  
-- **后端 & 数据库**: Node.js, Golang, NextJS, MongoDB, MySQL, Redis, REST API  
+- **后端 & 数据库**: Node.js, Golang, NextJS, MongoDB, MySQL, Redis 
 - **可视化**: ECharts, D3.js, Canvas, Pixi.js  
-- **效率提升**: Cursor, Warp, Grok, v0, ChatGpt
+- **效率提升**: Cursor, Warp, Grok, v0, ChatGpt, OpenClaw
 - **其他**: Selenium, Postman, Jenkins
 
 ---
@@ -44,7 +44,7 @@ const markdown = `
 ## 💼 工作经历
 
 ### 成都星迈吉科技有限公司 | 成都 | 海外游戏
-**Web 前端工程师 | 2024 – 至今**
+**Web 开发工程师 | 全栈（偏前端）| 2024 – 至今**
 
 
 - 负责多款海外游戏项目后台的开发与优化，支撑日均上万次数据交互  
@@ -54,7 +54,7 @@ const markdown = `
 - 解决生产环境中的性能与缓存问题（如缓存击穿、Append Object 上传分片异常）
 
 ### 成都雷兽互动科技有限公司 | 成都 | 国内小游戏
-**服务器开发 - Web | 2020 – 2024**
+**服务器开发 | 全栈（偏前端）| 2020 – 2024**
 
 - 主导 **大数据管理后台 / OA管理后台 / sdk配置后台** 开发与维护  
 - 接入广告商 SDK，完成广告事件采集与归因上报，日均处理广告数据 **500w+ 条**
