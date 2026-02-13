@@ -1,40 +1,223 @@
-<!DOCTYPE html><!--9mhNZz6H4G9o_oaFOa2Ib--><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/panchan.github.io/_next/static/media/797e433ab948586e-s.p.dbea232f.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="preload" href="/panchan.github.io/_next/static/media/caa3a2e1cccd8315-s.p.853070df.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="stylesheet" href="/panchan.github.io/_next/static/chunks/f17ec1aef1d4e87f.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/panchan.github.io/_next/static/chunks/54e17128ac97e491.js"/><script src="/panchan.github.io/_next/static/chunks/d6962d4e134e2fb2.js" async=""></script><script src="/panchan.github.io/_next/static/chunks/68ebb68e07e98438.js" async=""></script><script src="/panchan.github.io/_next/static/chunks/2ccd13302fd40fca.js" async=""></script><script src="/panchan.github.io/_next/static/chunks/41260dbcc1de38f2.js" async=""></script><script src="/panchan.github.io/_next/static/chunks/turbopack-075c67b448669e71.js" async=""></script><script src="/panchan.github.io/_next/static/chunks/24ef6109fc5033d8.js" async=""></script><script src="/panchan.github.io/_next/static/chunks/743983e24c49de8c.js" async=""></script><script src="/panchan.github.io/_next/static/chunks/0f5359503d9c972a.js" async=""></script><meta name="next-size-adjust" content=""/><title>PanChan - 近日随笔</title><meta name="description" content="PanChan - 近日随笔"/><link rel="icon" href="/panchan.github.io/user.png"/><script src="/panchan.github.io/_next/static/chunks/a6dad97d9634a72d.js" noModule=""></script></head><body class="geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable antialiased"><div hidden=""><!--$--><!--/$--></div><div class="max-w-3xl prose my-10 rounded-md  mx-auto p-6 bg-white"><div><div class="mb-6 border-b pb-4"><h2 class="text-xl font-semibold mb-2"><a class="no-underline underline-offset-5 hover:underline" href="/panchan.github.io/blog/detail/0">十月的代码与风</a></h2><p class="text-gray-600 text-sm mb-2">2025-10-22</p><p class="text-gray-800 line-clamp-2 overflow-hidden">
-十月的成都，天光渐短，风有了凉意。  
-坐在屏幕前敲代码的时候，窗外的云一层层飘过去，  
-像被注释掉的念头。  
+<!DOCTYPE html><!--UswStRsE4G_9Xg7FIrM1d--><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/panchan.github.io/_next/static/media/797e433ab948586e-s.p.dbea232f.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="preload" href="/panchan.github.io/_next/static/media/caa3a2e1cccd8315-s.p.853070df.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="stylesheet" href="/panchan.github.io/_next/static/chunks/f17ec1aef1d4e87f.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/panchan.github.io/_next/static/chunks/54e17128ac97e491.js"/><script src="/panchan.github.io/_next/static/chunks/d6962d4e134e2fb2.js" async=""></script><script src="/panchan.github.io/_next/static/chunks/68ebb68e07e98438.js" async=""></script><script src="/panchan.github.io/_next/static/chunks/2ccd13302fd40fca.js" async=""></script><script src="/panchan.github.io/_next/static/chunks/41260dbcc1de38f2.js" async=""></script><script src="/panchan.github.io/_next/static/chunks/turbopack-075c67b448669e71.js" async=""></script><script src="/panchan.github.io/_next/static/chunks/24ef6109fc5033d8.js" async=""></script><script src="/panchan.github.io/_next/static/chunks/743983e24c49de8c.js" async=""></script><script src="/panchan.github.io/_next/static/chunks/7429fed32c895c50.js" async=""></script><meta name="next-size-adjust" content=""/><title>PanChan - 近日随笔</title><meta name="description" content="PanChan - 近日随笔"/><link rel="icon" href="/panchan.github.io/user.png"/><script src="/panchan.github.io/_next/static/chunks/a6dad97d9634a72d.js" noModule=""></script></head><body class="geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable antialiased"><div hidden=""><!--$--><!--/$--></div><div class="max-w-3xl prose my-10 rounded-md  mx-auto p-6 bg-white"><div><div class="mb-6 border-b pb-4"><h2 class="text-xl font-semibold mb-2"><a class="no-underline underline-offset-5 hover:underline" href="/panchan.github.io/blog/detail/0">缓存击穿 &amp; 缓存雪崩 深度解析与实战方案</a></h2><p class="text-gray-600 text-sm mb-2">2026-02-13</p><p class="text-gray-800 line-clamp-2 overflow-hidden">
+在高并发系统架构中，缓存（通常基于 Redis）承担着削峰填谷、降低数据库压力的重要职责。但若设计不当，缓存体系反而可能成为系统故障的触发点。本文围绕 **缓存击穿（Cache Breakdown）** 与 **缓存雪崩（Cache Avalanche）** 两类典型问题进行系统说明。
 
-最近常常在思考：  
-代码之外，什么才算“结构合理”的生活？  
+---
 
-缓存、异步、复用、依赖注入，  
-这些词在脑子里转个不停，  
-仿佛也能拿来描述日常。  
-生活的状态和项目一样，  
-有时候要重构，有时候只需要热重载。  
+# 一、缓存击穿（Cache Breakdown）
 
-前端写久了，人会变得敏感。  
-对边距像素的误差、对逻辑分支的冗余、  
-对节奏的卡顿——甚至对自己的一点疲惫。  
-偶尔也会有报错，  
-某种程度上，这些报错也像生活里突然蹦出来的小插曲：  
-不致命，却提醒你别太快。  
+## 1. 定义
 
-生活和代码，总有交叉的部分。  
-比如装修时画施工图，才发现现实世界的“布局”比 CSS 难多了；  
-又比如构思小程序时，界面与逻辑的关系，  
-像人与人之间的沟通——看似简单，其实全靠细节。  
+缓存击穿指：
 
-慢慢地，我喜欢上这种状态：  
-在理性和感性之间切换。  
-白天拆逻辑、写函数，  
-晚上收拾思绪、写一点文字。  
-代码让我理解秩序，文字让我容纳混乱。  
+&gt; 某个高并发访问的热点 Key 在过期瞬间失效，大量请求直接穿透缓存访问数据库，导致数据库压力瞬时暴涨。
 
-十月的风从窗缝吹进来，  
-桌面上散着纸笔和键盘的光。  
-生活没有被完全编译成功，  
-但一切都在运行中。
-  </p></div><div class="mb-6 border-b pb-4"><h2 class="text-xl font-semibold mb-2"><a class="no-underline underline-offset-5 hover:underline" href="/panchan.github.io/blog/detail/1">深度与广度</a></h2><p class="text-gray-600 text-sm mb-2">2025-11-03</p><p class="text-gray-800 line-clamp-2 overflow-hidden">
+核心特征：
+
+-   单个 Key
+-   高并发访问
+-   瞬时失效
+
+---
+
+## 2. 发生过程
+
+时间线示意：
+
+- **T0**: 热点 Key 过期
+- **T1**: 大量请求同时访问
+- **T2**: 缓存未命中
+- **T3**: 所有请求直达数据库
+- **T4**: 数据库连接池耗尽或响应变慢
+
+---
+
+## 3. 常见场景
+
+-   秒杀商品详情
+-   热门文章
+-   爆款商品库存
+-   实时榜单数据
+
+---
+
+## 4. 解决思路
+
+### 4.1 分布式锁控制并发
+
+核心思想：
+
+只允许一个线程查询数据库并回填缓存，其余线程等待或快速失败。
+
+示例（Node.js 伪代码）：
+
+```js
+async function getData(key) {
+  let data = await redis.get(key)
+  if(data) return data
+
+  const lock = await acquireLock(key)
+  if(lock) {
+    data = await db.query(key)
+    await redis.set(key, data, { EX: 60 })
+    releaseLock(key)
+    return data
+  } else {
+    await sleep(50)
+    return getData(key)
+  }
+}
+```
+
+---
+
+### 4.2 逻辑过期时间
+
+将过期时间写入 value 内部：
+
+```json
+{
+  &quot;data&quot;: {},
+  &quot;expireTime&quot;: 1700000000
+}
+```
+
+当检测到逻辑过期时：
+
+-   立即返回旧数据
+-   异步刷新缓存
+
+---
+
+### 4.3 热点数据永不过期
+
+-   不设置物理过期时间
+-   通过定时任务主动刷新
+
+---
+
+# 二、缓存雪崩（Cache Avalanche）
+
+## 1. 定义
+
+缓存雪崩指：
+
+&gt; 大量缓存 Key 在同一时间集中失效，导致请求全部穿透至数据库，引发数据库崩溃。
+
+区别于缓存击穿：
+
+| 问题类型 | 影响范围 |
+| :--- | :--- |
+| 缓存击穿 | 单个热点 Key |
+| 缓存雪崩 | 大量 Key 同时失效 |
+
+---
+
+## 2. 发生原因
+
+1.  批量 Key 使用相同过期时间
+2.  Redis 实例宕机
+3.  大规模缓存主动删除
+4.  业务发布导致缓存整体刷新
+
+---
+
+## 3. 发生过程
+
+- **T0**: 大量 Key 同时过期
+- **T1**: 请求全部 Miss
+- **T2**: 数据库承压
+- **T3**: 响应变慢
+- **T4**: 服务线程堆积
+- **T5**: 系统整体不可用
+
+---
+
+## 4. 解决方案
+
+### 4.1 过期时间随机化
+
+避免同一时间失效：
+
+```js
+const ttl = 60 + Math.floor(Math.random() * 30)
+redis.set(key, value, { EX: ttl })
+```
+
+---
+
+### 4.2 多级缓存架构
+
+```
+客户端
+  ↓
+本地缓存（Memory）
+  ↓
+Redis
+  ↓
+数据库
+```
+
+即便 Redis 故障，本地缓存仍可部分兜底。
+
+---
+
+### 4.3 限流与熔断
+
+在服务层增加：
+
+-   QPS 限流
+-   熔断降级
+-   默认兜底数据
+
+---
+
+# 三、击穿与雪崩对比总结
+
+| 维度 | 缓存击穿 | 缓存雪崩 |
+| :--- | :--- | :--- |
+| 影响范围 | 单个热点 Key | 大量 Key |
+| 触发条件 | 热点 Key 过期 | 大量 Key 同时过期 |
+| 危害程度 | 高 | 极高 |
+| 核心治理 | 加锁控制并发 | 过期随机化 + 架构兜底 |
+
+---
+
+# 四、总结
+
+缓存体系的核心目标是削峰填谷，而非成为单点风险。
+
+在系统设计阶段应重点考虑：
+
+-   热点 Key 管理
+-   过期时间分布策略
+-   多级缓存架构
+-   服务限流与降级策略
+
+只有在架构层面系统化设计缓存策略，才能真正发挥缓存性能价值，而不是成为系统雪崩的触发器。
+</p></div><div class="mb-6 border-b pb-4"><h2 class="text-xl font-semibold mb-2"><a class="no-underline underline-offset-5 hover:underline" href="/panchan.github.io/blog/detail/1">2025下半年投资效益记录</a></h2><p class="text-gray-600 text-sm mb-2">2026-01-13</p><p class="text-gray-800 line-clamp-2 overflow-hidden">
+2025下半年通过参与Binance Alpha 和 Booster 项目，获得了一定的收益，估算约为1400u。
+
+期间收益不止于此，主要亏损在**网格合约机器人**、**批量迷你合约仓**等。
+    
+现持有**Apple**、**Tesla**代币化股票，长期看好。
+
+&gt; 身处AI时代的洪流，却不知力量该往何处使；像站在奔涌的算法瀑布前，手里握着旧时代的船桨，既兴奋又惶恐——怕稍一迟疑就被卷走，更怕奋力划动却偏离了心的方向。
+  </p></div><div class="mb-6 border-b pb-4"><h2 class="text-xl font-semibold mb-2"><a class="no-underline underline-offset-5 hover:underline" href="/panchan.github.io/blog/detail/2">《乌合之众》摘录</a></h2><p class="text-gray-600 text-sm mb-2">2025-11-07</p><p class="text-gray-800 line-clamp-2 overflow-hidden">
+&gt; 一个群体要是失去实事求是的能力，让真实的东西被跟他毫无关系的幻觉所代替。
+ 并不需要很多人，几个人聚在一起就构成了群体。
+那时，即使是杰出的学者，面对专业以外的东西，他们也会表现出群体的所有特征。
+每个人的观察能力和批评精神都消失了。
+
+&gt; 在群体中蠢人，白痴或妒忌者不会再感到自己平庸和无能，而是产生了一种强烈，短暂却巨大的力量。
+很不幸，这种夸大往往会让群体态度粗暴。
+
+&gt; 尤其是在拉丁群体当中，专横与贬狭达到了很高的程度，甚至完全摧毁了在昂格鲁萨克逊人当中如此强大的个人独立精神。
+拉丁群体只看重自己所属团体的集体独立，这种独立的特征便是要用粗暴手段让意见者立即接受他们的信仰。
+
+&gt; 群体屈从于权威，却不怎么为善良动心，对他们来说，善良是一种弱点。
+
+### 当个人放弃理性、沉溺于群体情绪时，人性中的智慧、独立与善良都会被吞没。
+  </p></div><div class="mb-6 border-b pb-4"><h2 class="text-xl font-semibold mb-2"><a class="no-underline underline-offset-5 hover:underline" href="/panchan.github.io/blog/detail/3">深度与广度</a></h2><p class="text-gray-600 text-sm mb-2">2025-11-03</p><p class="text-gray-800 line-clamp-2 overflow-hidden">
   十一月的下午，咖啡凉了一半，屏幕上还停着几个浏览器标签：一个是 Vue 3 源码，一个是 React Fiber 机制，还有一篇掘金上关于微前端的文章。  
 看着它们，我突然在想一个老生常谈的问题：**技术深度重要，还是技术广度更重要？**
 
@@ -88,27 +271,40 @@
 
 咖啡凉透了。继续去看源码了。毕竟“深度”这玩意，就像夜路——越走越静，也越走越有意思。
 
-  </p></div><div class="mb-6 border-b pb-4"><h2 class="text-xl font-semibold mb-2"><a class="no-underline underline-offset-5 hover:underline" href="/panchan.github.io/blog/detail/2">《乌合之众》摘录</a></h2><p class="text-gray-600 text-sm mb-2">2025-11-07</p><p class="text-gray-800 line-clamp-2 overflow-hidden">
-&gt; 一个群体要是失去实事求是的能力，让真实的东西被跟他毫无关系的幻觉所代替。
- 并不需要很多人，几个人聚在一起就构成了群体。
-那时，即使是杰出的学者，面对专业以外的东西，他们也会表现出群体的所有特征。
-每个人的观察能力和批评精神都消失了。
+  </p></div><div class="mb-6 border-b pb-4"><h2 class="text-xl font-semibold mb-2"><a class="no-underline underline-offset-5 hover:underline" href="/panchan.github.io/blog/detail/4">十月的代码与风</a></h2><p class="text-gray-600 text-sm mb-2">2025-10-22</p><p class="text-gray-800 line-clamp-2 overflow-hidden">
+十月的成都，天光渐短，风有了凉意。  
+坐在屏幕前敲代码的时候，窗外的云一层层飘过去，  
+像被注释掉的念头。  
 
-&gt; 在群体中蠢人，白痴或妒忌者不会再感到自己平庸和无能，而是产生了一种强烈，短暂却巨大的力量。
-很不幸，这种夸大往往会让群体态度粗暴。
+最近常常在思考：  
+代码之外，什么才算“结构合理”的生活？  
 
-&gt; 尤其是在拉丁群体当中，专横与贬狭达到了很高的程度，甚至完全摧毁了在昂格鲁萨克逊人当中如此强大的个人独立精神。
-拉丁群体只看重自己所属团体的集体独立，这种独立的特征便是要用粗暴手段让意见者立即接受他们的信仰。
+缓存、异步、复用、依赖注入，  
+这些词在脑子里转个不停，  
+仿佛也能拿来描述日常。  
+生活的状态和项目一样，  
+有时候要重构，有时候只需要热重载。  
 
-&gt; 群体屈从于权威，却不怎么为善良动心，对他们来说，善良是一种弱点。
+前端写久了，人会变得敏感。  
+对边距像素的误差、对逻辑分支的冗余、  
+对节奏的卡顿——甚至对自己的一点疲惫。  
+偶尔也会有报错，  
+某种程度上，这些报错也像生活里突然蹦出来的小插曲：  
+不致命，却提醒你别太快。  
 
-### 当个人放弃理性、沉溺于群体情绪时，人性中的智慧、独立与善良都会被吞没。
-  </p></div><div class="mb-6 border-b pb-4"><h2 class="text-xl font-semibold mb-2"><a class="no-underline underline-offset-5 hover:underline" href="/panchan.github.io/blog/detail/3">2025下半年投资效益记录</a></h2><p class="text-gray-600 text-sm mb-2">2026-01-13</p><p class="text-gray-800 line-clamp-2 overflow-hidden">
-2025下半年通过参与Binance Alpha 和 Booster 项目，获得了一定的收益，估算约为1400u。
+生活和代码，总有交叉的部分。  
+比如装修时画施工图，才发现现实世界的“布局”比 CSS 难多了；  
+又比如构思小程序时，界面与逻辑的关系，  
+像人与人之间的沟通——看似简单，其实全靠细节。  
 
-期间收益不止于此，主要亏损在**网格合约机器人**、**批量迷你合约仓**等。
-    
-现持有**Apple**、**Tesla**代币化股票，长期看好。
+慢慢地，我喜欢上这种状态：  
+在理性和感性之间切换。  
+白天拆逻辑、写函数，  
+晚上收拾思绪、写一点文字。  
+代码让我理解秩序，文字让我容纳混乱。  
 
-&gt; 身处AI时代的洪流，却不知力量该往何处使；像站在奔涌的算法瀑布前，手里握着旧时代的船桨，既兴奋又惶恐——怕稍一迟疑就被卷走，更怕奋力划动却偏离了心的方向。
-  </p></div><div class="my-4"><span class="z-10 mt-5 cursor-pointer  hover:underline underline-offset-4">⬅️ 返回主页</span></div></div><!--$--><!--/$--></div><script src="/panchan.github.io/_next/static/chunks/54e17128ac97e491.js" id="_R_" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,"1:\"$Sreact.fragment\"\n2:I[74343,[\"/panchan.github.io/_next/static/chunks/24ef6109fc5033d8.js\",\"/panchan.github.io/_next/static/chunks/743983e24c49de8c.js\"],\"default\"]\n3:I[68226,[\"/panchan.github.io/_next/static/chunks/24ef6109fc5033d8.js\",\"/panchan.github.io/_next/static/chunks/743983e24c49de8c.js\"],\"default\"]\n4:I[66024,[\"/panchan.github.io/_next/static/chunks/24ef6109fc5033d8.js\",\"/panchan.github.io/_next/static/chunks/743983e24c49de8c.js\"],\"ClientPageRoot\"]\n5:I[24414,[\"/panchan.github.io/_next/static/chunks/0f5359503d9c972a.js\"],\"default\"]\n8:I[98053,[\"/panchan.github.io/_next/static/chunks/24ef6109fc5033d8.js\",\"/panchan.github.io/_next/static/chunks/743983e24c49de8c.js\"],\"OutletBoundary\"]\na:I[19896,[\"/panchan.github.io/_next/static/chunks/24ef6109fc5033d8.js\",\"/panchan.github.io/_next/static/chunks/743983e24c49de8c.js\"],\"AsyncMetadataOutlet\"]\nc:I[98053,[\"/panchan.github.io/_next/static/chunks/24ef6109fc5033d8.js\",\"/panchan.github.io/_next/static/chunks/743983e24c49de8c.js\"],\"ViewportBoundary\"]\ne:I[98053,[\"/panchan.github.io/_next/static/chunks/24ef6109fc5033d8.js\",\"/panchan.github.io/_next/static/chunks/743983e24c49de8c.js\"],\"MetadataBoundary\"]\nf:\"$Sreact.suspense\"\n11:I[6396,[],\"default\"]\n:HL[\"/panchan.github.io/_next/static/chunks/f17ec1aef1d4e87f.css\",\"style\"]\n:HL[\"/panchan.github.io/_next/static/media/797e433ab948586e-s.p.dbea232f.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n:HL[\"/panchan.github.io/_next/static/media/caa3a2e1cccd8315-s.p.853070df.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n"])</script><script>self.__next_f.push([1,"0:{\"P\":null,\"b\":\"9mhNZz6H4G9o_oaFOa2Ib\",\"p\":\"/panchan.github.io\",\"c\":[\"\",\"blog\"],\"i\":false,\"f\":[[[\"\",{\"children\":[\"blog\",{\"children\":[\"__PAGE__\",{}]}]},\"$undefined\",\"$undefined\",true],[\"\",[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/panchan.github.io/_next/static/chunks/f17ec1aef1d4e87f.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}]],[\"$\",\"html\",null,{\"lang\":\"en\",\"children\":[\"$\",\"body\",null,{\"className\":\"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable antialiased\",\"children\":[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":404}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]}]]}],{\"children\":[\"blog\",[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"div\",null,{\"className\":\"max-w-3xl prose my-10 rounded-md  mx-auto p-6 bg-white\",\"children\":[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]]}],{\"children\":[\"__PAGE__\",[\"$\",\"$1\",\"c\",{\"children\":[[\"$\",\"$L4\",null,{\"Component\":\"$5\",\"searchParams\":{},\"params\":{},\"promises\":[\"$@6\",\"$@7\"]}],[[\"$\",\"script\",\"script-0\",{\"src\":\"/panchan.github.io/_next/static/chunks/0f5359503d9c972a.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"$L8\",null,{\"children\":[\"$L9\",[\"$\",\"$La\",null,{\"promise\":\"$@b\"}]]}]]}],{},null,false]},null,false]},null,false],[\"$\",\"$1\",\"h\",{\"children\":[null,[[\"$\",\"$Lc\",null,{\"children\":\"$Ld\"}],[\"$\",\"meta\",null,{\"name\":\"next-size-adjust\",\"content\":\"\"}]],[\"$\",\"$Le\",null,{\"children\":[\"$\",\"div\",null,{\"hidden\":true,\"children\":[\"$\",\"$f\",null,{\"fallback\":null,\"children\":\"$L10\"}]}]}]]}],false]],\"m\":\"$undefined\",\"G\":[\"$11\",[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/panchan.github.io/_next/static/chunks/f17ec1aef1d4e87f.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}]]],\"s\":false,\"S\":true}\n"])</script><script>self.__next_f.push([1,"6:{}\n7:\"$0:f:0:1:2:children:2:children:1:props:children:0:props:params\"\n"])</script><script>self.__next_f.push([1,"d:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"1\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]\n9:null\n"])</script><script>self.__next_f.push([1,"12:I[10879,[\"/panchan.github.io/_next/static/chunks/24ef6109fc5033d8.js\",\"/panchan.github.io/_next/static/chunks/743983e24c49de8c.js\"],\"IconMark\"]\nb:{\"metadata\":[[\"$\",\"title\",\"0\",{\"children\":\"PanChan - 近日随笔\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"PanChan - 近日随笔\"}],[\"$\",\"link\",\"2\",{\"rel\":\"icon\",\"href\":\"/panchan.github.io/user.png\"}],[\"$\",\"$L12\",\"3\",{}]],\"error\":null,\"digest\":\"$undefined\"}\n"])</script><script>self.__next_f.push([1,"10:\"$b:metadata\"\n"])</script></body></html>
+十月的风从窗缝吹进来，  
+桌面上散着纸笔和键盘的光。  
+生活没有被完全编译成功，  
+但一切都在运行中。
+  </p></div><div class="my-4"><span class="z-10 mt-5 cursor-pointer  hover:underline underline-offset-4">⬅️ 返回主页</span></div></div><!--$--><!--/$--></div><script src="/panchan.github.io/_next/static/chunks/54e17128ac97e491.js" id="_R_" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,"1:\"$Sreact.fragment\"\n2:I[74343,[\"/panchan.github.io/_next/static/chunks/24ef6109fc5033d8.js\",\"/panchan.github.io/_next/static/chunks/743983e24c49de8c.js\"],\"default\"]\n3:I[68226,[\"/panchan.github.io/_next/static/chunks/24ef6109fc5033d8.js\",\"/panchan.github.io/_next/static/chunks/743983e24c49de8c.js\"],\"default\"]\n4:I[66024,[\"/panchan.github.io/_next/static/chunks/24ef6109fc5033d8.js\",\"/panchan.github.io/_next/static/chunks/743983e24c49de8c.js\"],\"ClientPageRoot\"]\n5:I[24414,[\"/panchan.github.io/_next/static/chunks/7429fed32c895c50.js\"],\"default\"]\n8:I[98053,[\"/panchan.github.io/_next/static/chunks/24ef6109fc5033d8.js\",\"/panchan.github.io/_next/static/chunks/743983e24c49de8c.js\"],\"OutletBoundary\"]\na:I[19896,[\"/panchan.github.io/_next/static/chunks/24ef6109fc5033d8.js\",\"/panchan.github.io/_next/static/chunks/743983e24c49de8c.js\"],\"AsyncMetadataOutlet\"]\nc:I[98053,[\"/panchan.github.io/_next/static/chunks/24ef6109fc5033d8.js\",\"/panchan.github.io/_next/static/chunks/743983e24c49de8c.js\"],\"ViewportBoundary\"]\ne:I[98053,[\"/panchan.github.io/_next/static/chunks/24ef6109fc5033d8.js\",\"/panchan.github.io/_next/static/chunks/743983e24c49de8c.js\"],\"MetadataBoundary\"]\nf:\"$Sreact.suspense\"\n11:I[6396,[],\"default\"]\n:HL[\"/panchan.github.io/_next/static/chunks/f17ec1aef1d4e87f.css\",\"style\"]\n:HL[\"/panchan.github.io/_next/static/media/797e433ab948586e-s.p.dbea232f.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n:HL[\"/panchan.github.io/_next/static/media/caa3a2e1cccd8315-s.p.853070df.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n"])</script><script>self.__next_f.push([1,"0:{\"P\":null,\"b\":\"UswStRsE4G_9Xg7FIrM1d\",\"p\":\"/panchan.github.io\",\"c\":[\"\",\"blog\"],\"i\":false,\"f\":[[[\"\",{\"children\":[\"blog\",{\"children\":[\"__PAGE__\",{}]}]},\"$undefined\",\"$undefined\",true],[\"\",[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/panchan.github.io/_next/static/chunks/f17ec1aef1d4e87f.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}]],[\"$\",\"html\",null,{\"lang\":\"en\",\"children\":[\"$\",\"body\",null,{\"className\":\"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable antialiased\",\"children\":[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":404}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]}]]}],{\"children\":[\"blog\",[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"div\",null,{\"className\":\"max-w-3xl prose my-10 rounded-md  mx-auto p-6 bg-white\",\"children\":[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]]}],{\"children\":[\"__PAGE__\",[\"$\",\"$1\",\"c\",{\"children\":[[\"$\",\"$L4\",null,{\"Component\":\"$5\",\"searchParams\":{},\"params\":{},\"promises\":[\"$@6\",\"$@7\"]}],[[\"$\",\"script\",\"script-0\",{\"src\":\"/panchan.github.io/_next/static/chunks/7429fed32c895c50.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"$L8\",null,{\"children\":[\"$L9\",[\"$\",\"$La\",null,{\"promise\":\"$@b\"}]]}]]}],{},null,false]},null,false]},null,false],[\"$\",\"$1\",\"h\",{\"children\":[null,[[\"$\",\"$Lc\",null,{\"children\":\"$Ld\"}],[\"$\",\"meta\",null,{\"name\":\"next-size-adjust\",\"content\":\"\"}]],[\"$\",\"$Le\",null,{\"children\":[\"$\",\"div\",null,{\"hidden\":true,\"children\":[\"$\",\"$f\",null,{\"fallback\":null,\"children\":\"$L10\"}]}]}]]}],false]],\"m\":\"$undefined\",\"G\":[\"$11\",[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/panchan.github.io/_next/static/chunks/f17ec1aef1d4e87f.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}]]],\"s\":false,\"S\":true}\n"])</script><script>self.__next_f.push([1,"6:{}\n7:\"$0:f:0:1:2:children:2:children:1:props:children:0:props:params\"\n"])</script><script>self.__next_f.push([1,"d:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"1\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]\n9:null\n"])</script><script>self.__next_f.push([1,"12:I[10879,[\"/panchan.github.io/_next/static/chunks/24ef6109fc5033d8.js\",\"/panchan.github.io/_next/static/chunks/743983e24c49de8c.js\"],\"IconMark\"]\nb:{\"metadata\":[[\"$\",\"title\",\"0\",{\"children\":\"PanChan - 近日随笔\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"PanChan - 近日随笔\"}],[\"$\",\"link\",\"2\",{\"rel\":\"icon\",\"href\":\"/panchan.github.io/user.png\"}],[\"$\",\"$L12\",\"3\",{}]],\"error\":null,\"digest\":\"$undefined\"}\n"])</script><script>self.__next_f.push([1,"10:\"$b:metadata\"\n"])</script></body></html>
