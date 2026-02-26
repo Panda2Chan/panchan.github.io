@@ -10,11 +10,8 @@ export default function Home() {
   const router = useRouter();
 
 
-  const handleBtnClick = () => {
-    router.push("/resume")
-  }
-  const handleBlogClick = () => {
-    router.push("/blog")
+  const handleBtnClick = (path: string) => {
+    router.push(path)
   }
 
 
@@ -34,26 +31,32 @@ export default function Home() {
             </span>
           </div>
           <div className="flex gap-5 mt-10">
-            <InteractiveHoverButton onClick={handleBlogClick}>
-              近日随笔
-            </InteractiveHoverButton>
-
-            <InteractiveHoverButton onClick={handleBtnClick}>
+            <InteractiveHoverButton onClick={() => handleBtnClick('/resume')}>
               我的简历
             </InteractiveHoverButton>
+          </div>
+
+          <div className="flex gap-10 mt-10">
+            <div onClick={() => handleBtnClick('blog')} className="cursor-pointer underline-offset-5 hover:underline">
+              近日随笔
+            </div>
+
+            <div onClick={() => handleBtnClick('poetry')} className="cursor-pointer underline-offset-5 hover:underline">
+              诗
+            </div>
           </div>
 
 
         </div>
       </div>
-
+      {/* 
       <Particles
         className="absolute inset-0 z-0"
         quantity={100}
         ease={80}
         color="#000"
         refresh
-      />
+      /> */}
 
     </div>
   );
