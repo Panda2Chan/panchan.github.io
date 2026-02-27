@@ -19,11 +19,19 @@ export default function Resume() {
       ],
       time: '2026-02-26 丙午马年暮春'
     },
+    {
+      name: '蝶恋花 又春',
+      content: [
+        '绮席华筵朝暮布，玉案珍馐，望儿归家路。燕返东风花又吐，门前芳草年年故。',
+        '白发倚门相对语，灯影摇红，叹流年难驻。三千里路如过隙，何待临行方密补。',
+      ],
+      time: '2026-02-27 丙午马年暮春'
+    },
   ]
   return (
     <div >
       {/* 唐诗风格诗集页面 */}
-      <div className="max-w-2xl mx-auto  py-12">
+      <div className="max-w-3xl mx-auto  py-12">
         {/* 标题 */}
         <header className="text-center mb-12">
           <h1 className="text-4xl font-bold text-amber-900 mb-2">拾叶集</h1>
