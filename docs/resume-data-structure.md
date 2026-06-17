@@ -278,7 +278,7 @@ export interface ResumeData {
       "summary": "关注构建、页面检查、移动端适配和部署发布，避免只完成代码而未完成交付。",
       "keywords": ["构建验证", "页面检查", "交付验证", "GitHub Pages", "部署发布"],
       "evidence": [
-        "简历页面需同步满足在线浏览和 A4 PDF 投递。",
+        "能兼顾在线展示、移动端浏览和招聘投递材料的可读性。",
         "最终交付应包含线上地址、GitHub 提交或 PR 信息和可复核的验收结果。"
       ]
     }
@@ -502,7 +502,7 @@ export interface ResumeData {
 - `href` should only be present when it is safe to expose publicly.
 - `aiCapabilities[].evidence` must describe real work patterns, but must not include secrets, private repo names, tokens, client-sensitive details, or local filesystem paths.
 - `metrics[].value` should be human-readable strings because resume metrics often include units like `40%+` or `500w+ / day`.
-- `print.maxPages` should default to `2` for a delivery-friendly resume PDF.
+- `print.maxPages` should default to `2` for a delivery-friendly browser print layout.
 - Dates may stay as display strings (`period`) because the resume is presentation-oriented and does not currently need date arithmetic.
 
 ## Implementation Notes
@@ -524,5 +524,5 @@ export interface ResumeData {
 - The resume page clearly emphasizes AI tools, AI Agent collaboration, and Spec-driven development.
 - The page no longer requires editing a large Markdown string for content changes.
 - Desktop and mobile layouts remain readable.
-- Print/PDF output is A4-friendly and does not cut through major sections.
+- Browser print output is A4-friendly and does not cut through major sections.
 - Public content avoids sensitive Codex history details, tokens, private customer details, and local machine paths.
