@@ -156,10 +156,14 @@
   }
 }
 
+.resume-print-page {
+  display: none;
+}
+
 @media print {
   @page {
     size: A4;
-    margin: 12mm 11mm;
+    margin: 11mm 12mm;
   }
 
   html,
@@ -172,142 +176,188 @@
     print-color-adjust: exact;
   }
 
+  .resume-web-page,
+  .resume-actions {
+    display: none !important;
+  }
+
   .resume-shell {
     width: auto !important;
     max-width: none !important;
     padding: 0 !important;
   }
 
-  .resume-page {
-    font-family: Arial, "Microsoft YaHei", sans-serif;
-    line-height: 1.5 !important;
-    max-width: none !important;
-    width: 100% !important;
-  }
-
-  .resume-section {
-    break-inside: auto;
-    padding: 3.5mm 0 !important;
-  }
-
-  .resume-page > .resume-section:first-child {
-    padding-top: 0 !important;
-    padding-bottom: 4mm !important;
-  }
-
-  .resume-layout,
-  .resume-highlight-grid,
-  .resume-project-grid,
-  .resume-card-grid {
+  .resume-print-page {
+    color: #0f172a;
     display: block !important;
+    font-family: Arial, "Microsoft YaHei", sans-serif;
+    font-size: 9.2pt;
+    line-height: 1.42;
+    width: 100%;
   }
 
-  .resume-page {
-    display: flex !important;
-    flex-direction: column !important;
+  .resume-print-header {
+    border-bottom: 1px solid #cbd5e1;
+    margin-bottom: 3.2mm;
+    padding-bottom: 3.2mm;
   }
 
-  .resume-layout {
-    display: contents !important;
+  .resume-print-heading {
+    align-items: flex-start;
+    display: flex;
+    gap: 8mm;
+    justify-content: space-between;
   }
 
-  .resume-main,
-  .resume-sidebar {
-    display: contents !important;
+  .resume-print-name {
+    font-size: 18pt;
+    font-weight: 700;
+    line-height: 1.15;
+    margin: 0;
   }
 
-  .resume-skills-section {
-    order: 3;
+  .resume-print-title {
+    color: #334155;
+    font-size: 9.5pt;
+    font-weight: 600;
+    margin: 1mm 0 0;
   }
 
-  .resume-education-section {
-    order: 4;
+  .resume-print-contact {
+    color: #475569;
+    display: flex;
+    flex: 0 0 72mm;
+    flex-wrap: wrap;
+    font-size: 8.4pt;
+    gap: 1mm 4mm;
+    justify-content: flex-end;
+    line-height: 1.35;
+    margin-top: .6mm;
   }
 
-  .resume-experience-section {
-    order: 1;
+  .resume-print-summary {
+    color: #334155;
+    font-size: 9.2pt;
+    line-height: 1.45;
+    margin: 2.5mm 0 0;
   }
 
-  .resume-project-section {
-    order: 2;
+  .resume-print-section {
+    break-inside: auto;
+    margin-top: 3.2mm;
   }
 
-  .resume-ai-section {
-    order: 5;
+  .resume-print-section-title {
+    border-bottom: 1px solid #e2e8f0;
+    color: #0f172a;
+    font-size: 10.6pt;
+    font-weight: 700;
+    line-height: 1.25;
+    margin: 0 0 1.6mm;
+    padding-bottom: .8mm;
   }
 
-  .resume-profile-row {
-    align-items: flex-start !important;
-    gap: 3mm !important;
+  .resume-print-skill-grid {
+    display: grid;
+    gap: 1mm 5mm;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .resume-header-row {
-    gap: 4mm !important;
+  .resume-print-skill-grid p {
+    color: #334155;
+    font-size: 8.7pt;
+    line-height: 1.35;
+    margin: 0;
   }
 
-  .resume-profile-row img {
-    width: 18mm !important;
-    height: 18mm !important;
+  .resume-print-item {
+    break-inside: avoid;
+    margin-top: 2.3mm;
+    page-break-inside: avoid;
   }
 
-  .resume-sidebar {
-    border-left: 0 !important;
-    border-top: 0 !important;
+  .resume-print-item-head {
+    align-items: flex-start;
+    display: flex;
+    gap: 6mm;
+    justify-content: space-between;
   }
 
-  .resume-contact-list {
-    justify-content: flex-start !important;
+  .resume-print-item-title {
+    color: #0f172a;
+    font-size: 9.6pt;
+    font-weight: 700;
+    line-height: 1.25;
+    margin: 0;
   }
 
-  .resume-card {
+  .resume-print-subtitle {
+    color: #475569;
+    font-size: 8.7pt;
+    line-height: 1.35;
+    margin: .5mm 0 0;
+  }
+
+  .resume-print-meta {
+    color: #64748b;
+    flex: 0 0 auto;
+    font-size: 8.2pt;
+    line-height: 1.35;
+    margin: .2mm 0 0;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .resume-print-body,
+  .resume-print-metrics {
+    color: #334155;
+    font-size: 8.8pt;
+    line-height: 1.38;
+    margin: 1.1mm 0 0;
+  }
+
+  .resume-print-metrics {
+    color: #475569;
+    font-weight: 600;
+  }
+
+  .resume-print-list {
+    color: #334155;
+    font-size: 8.7pt;
+    line-height: 1.34;
+    list-style: disc;
+    margin: 1mm 0 0;
+    padding-left: 4mm;
+  }
+
+  .resume-print-list li {
+    margin-top: .5mm;
+  }
+
+  .resume-print-ai-grid {
+    display: grid;
+    gap: 1.5mm 5mm;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .resume-print-ai-item {
     break-inside: avoid;
     page-break-inside: avoid;
-    border-radius: 4px;
-    padding: 2mm 2.5mm !important;
-    margin-top: 2mm !important;
   }
 
-  .resume-block {
-    break-inside: avoid;
-    page-break-inside: avoid;
+  .resume-print-ai-item h3 {
+    color: #0f172a;
+    font-size: 8.9pt;
+    font-weight: 700;
+    line-height: 1.25;
+    margin: 0;
   }
 
-  .resume-metric-grid {
-    gap: 2mm !important;
-  }
-
-  .resume-highlight-grid > * {
-    margin-top: 2mm !important;
-  }
-
-  .resume-page h1 {
-    font-size: 18pt !important;
-    line-height: 1.2 !important;
-  }
-
-  .resume-page h2 {
-    font-size: 13pt !important;
-    line-height: 1.25 !important;
-  }
-
-  .resume-page h3 {
-    font-size: 10.5pt !important;
-    line-height: 1.35 !important;
-  }
-
-  .resume-page p,
-  .resume-page li,
-  .resume-page a {
-    font-size: 9.5pt !important;
-    line-height: 1.45 !important;
-  }
-
-  .resume-page span {
-    line-height: 1.45 !important;
-  }
-
-  .resume-actions {
-    display: none !important;
+  .resume-print-ai-item p {
+    color: #334155;
+    font-size: 8.4pt;
+    line-height: 1.35;
+    margin: .7mm 0 0;
   }
 
   a {

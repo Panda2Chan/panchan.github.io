@@ -22,10 +22,10 @@ export const resumeData: ResumeData = {
     displayName: 'PanChan - 陈宣宏',
     title: 'AI 驱动的前端 / 全栈协作工程师',
     location: '成都, 中国',
-    yearsOfExperience: 5,
+    yearsOfExperience: 6,
     avatarSrc: '/user.png',
     summary:
-      '拥有 5 年 Web 前端与后台系统开发经验，熟悉 Vue、React、Next.js、TypeScript 与 Node.js。重度使用 Codex、Cursor 等 AI 工具，将需求分析、规格建模、代码实现、重构验证和交付发布串成可复用的工程工作流。',
+      '拥有 6 年 Web 前端与后台系统开发经验，熟悉 Vue、React、Next.js、TypeScript 与 Node.js。重度使用 Codex、Cursor 等 AI 工具，将需求分析、规格建模、代码实现、重构验证和交付发布串成可复用的工程工作流。',
     highlights: [
       '擅长将模糊业务需求拆解为可实现的页面结构、数据结构、验收标准和任务清单。',
       '熟悉 Spec 驱动开发 / OpenSpec 工作方式，能够先沉淀能力边界、字段映射、兼容策略，再进入实现。',

@@ -169,9 +169,9 @@ export interface ResumeData {
     "displayName": "PanChan - 陈宣宏",
     "title": "AI 驱动的前端 / 全栈协作工程师",
     "location": "成都, 中国",
-    "yearsOfExperience": 5,
+    "yearsOfExperience": 6,
     "avatarSrc": "/user.png",
-    "summary": "拥有 5 年 Web 前端与后台系统开发经验，熟悉 Vue、React、Next.js、TypeScript 与 Node.js。重度使用 Codex、Cursor 等 AI 工具，将需求分析、规格建模、代码实现、重构验证和交付发布串成可复用的工程工作流。",
+    "summary": "拥有 6 年 Web 前端与后台系统开发经验，熟悉 Vue、React、Next.js、TypeScript 与 Node.js。重度使用 Codex、Cursor 等 AI 工具，将需求分析、规格建模、代码实现、重构验证和交付发布串成可复用的工程工作流。",
     "highlights": [
       "擅长将模糊业务需求拆解为可实现的页面结构、数据结构、验收标准和任务清单。",
       "熟悉 Spec 驱动开发 / OpenSpec 工作方式，能够先沉淀能力边界、字段映射、兼容策略，再进入实现。",
@@ -511,10 +511,11 @@ export interface ResumeData {
 2. Introduce `src/app/resume/_data/resume.ts` exporting `resumeData: ResumeData`.
 3. Update `src/app/resume/layout.tsx` metadata from `resumeData.meta`.
 4. Update `src/app/resume/page.tsx` to render structured sections from `resumeData`.
-5. Add print CSS in `src/app/globals.css` or route-level CSS:
+5. Add a print-only resume document and print CSS in `src/app/globals.css` or route-level CSS:
    - A4 page size.
    - Avoid breaking inside experience/project blocks.
    - Hide navigation-only elements such as back-home buttons in print.
+   - Hide the rich web layout in print and render a classic vertical resume layout for HR-friendly PDF export.
    - Keep font sizes readable and avoid emoji-heavy PDF output if the renderer has font issues.
 6. Provide a web-page export control that triggers the browser print dialog from the final rendered `/resume` page; users can choose "Save as PDF" locally.
 
@@ -524,5 +525,5 @@ export interface ResumeData {
 - The resume page clearly emphasizes AI tools, AI Agent collaboration, and Spec-driven development.
 - The page no longer requires editing a large Markdown string for content changes.
 - Desktop and mobile layouts remain readable.
-- Browser print output is A4-friendly and does not cut through major sections.
+- Browser print output uses the dedicated vertical resume layout, is A4-friendly, and does not cut through major sections.
 - Public content avoids sensitive Codex history details, tokens, private customer details, and local machine paths.

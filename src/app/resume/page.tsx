@@ -17,6 +17,7 @@ import { resumeData } from './_data/resume'
 import type { ResumeLink, ResumeLevel } from './_data/types'
 
 const visibleContacts = resumeData.profile.contacts.filter((contact) => contact.visible)
+const printableContacts = visibleContacts.filter((contact) => contact.type !== 'print')
 const repoBasePath = process.env.NEXT_PUBLIC_REPO ? `/${process.env.NEXT_PUBLIC_REPO}` : ''
 
 const withBasePath = (href: string) => {
@@ -38,6 +39,19 @@ const contactIcon = (type: ResumeLink['type']) => {
     default:
       return <LinkIcon aria-hidden="true" className="size-4" />
   }
+}
+
+const printableContactLabel: Partial<Record<ResumeLink['type'], string>> = {
+  email: '邮箱',
+  github: 'GitHub',
+  location: '城市',
+  phone: '电话',
+}
+
+const contactText = (contact: ResumeLink) => {
+  const label = printableContactLabel[contact.type]
+
+  return label ? `${label}: ${contact.value}` : contact.value
 }
 
 const tagTone: Record<ResumeLevel, string> = {
@@ -147,10 +161,139 @@ function CompactList({
   )
 }
 
+function PrintSection({
+  children,
+  title,
+}: {
+  children: React.ReactNode
+  title: string
+}) {
+  return (
+    <section className="resume-print-section">
+      <h2 className="resume-print-section-title">{title}</h2>
+      {children}
+    </section>
+  )
+}
+
+function PrintList({ items }: { items: string[] }) {
+  return (
+    <ul className="resume-print-list">
+      {items.map((item) => (
+        <li key={item}>{item}</li>
+      ))}
+    </ul>
+  )
+}
+
+function PrintResume() {
+  return (
+    <article className="resume-print-page" aria-label="PDF 简历">
+      <header className="resume-print-header">
+        <div className="resume-print-heading">
+          <div>
+            <h1 className="resume-print-name">{resumeData.profile.displayName}</h1>
+            <p className="resume-print-title">
+              {resumeData.profile.title} · {resumeData.profile.location} · {resumeData.profile.yearsOfExperience} 年经验
+            </p>
+          </div>
+          <div className="resume-print-contact">
+            {printableContacts.map((contact) => (
+              <span key={`${contact.type}-${contact.value}`}>{contactText(contact)}</span>
+            ))}
+          </div>
+        </div>
+        <p className="resume-print-summary">{resumeData.profile.summary}</p>
+      </header>
+
+      <PrintSection title="核心能力">
+        <div className="resume-print-skill-grid">
+          {resumeData.skillGroups.map((group) => (
+            <p key={group.id}>
+              <strong>{group.title}：</strong>
+              {group.items.join(' / ')}
+            </p>
+          ))}
+        </div>
+      </PrintSection>
+
+      <PrintSection title="工作经历">
+        {resumeData.experiences.map((experience) => (
+          <article className="resume-print-item" key={experience.id}>
+            <div className="resume-print-item-head">
+              <div>
+                <h3 className="resume-print-item-title">{experience.company}</h3>
+                <p className="resume-print-subtitle">
+                  {experience.role} · {experience.roleScope} · {experience.industry}
+                </p>
+              </div>
+              <p className="resume-print-meta">
+                {experience.period} · {experience.location}
+              </p>
+            </div>
+            <p className="resume-print-body">{experience.summary}</p>
+            {experience.metrics?.length ? (
+              <p className="resume-print-metrics">
+                {experience.metrics.map((metric) => `${metric.label} ${metric.value}`).join('；')}
+              </p>
+            ) : null}
+            <PrintList items={experience.achievements.slice(0, 4)} />
+          </article>
+        ))}
+      </PrintSection>
+
+      <PrintSection title="项目经历">
+        {resumeData.projects.map((project) => (
+          <article className="resume-print-item" key={project.id}>
+            <div className="resume-print-item-head">
+              <div>
+                <h3 className="resume-print-item-title">{project.name}</h3>
+                <p className="resume-print-subtitle">
+                  {project.category} · {project.role}
+                </p>
+              </div>
+              <p className="resume-print-meta">{project.technologies.slice(0, 4).join(' / ')}</p>
+            </div>
+            <p className="resume-print-body">{project.summary}</p>
+            <PrintList items={[...project.responsibilities, ...project.achievements].slice(0, 3)} />
+          </article>
+        ))}
+      </PrintSection>
+
+      <PrintSection title="AI / Spec 工程能力">
+        <div className="resume-print-ai-grid">
+          {resumeData.aiCapabilities.map((capability) => (
+            <article className="resume-print-ai-item" key={capability.id}>
+              <h3>{capability.title}</h3>
+              <p>{capability.summary}</p>
+            </article>
+          ))}
+        </div>
+      </PrintSection>
+
+      <PrintSection title="教育经历">
+        <article className="resume-print-item">
+          <div className="resume-print-item-head">
+            <div>
+              <h3 className="resume-print-item-title">{resumeData.education.school}</h3>
+              <p className="resume-print-subtitle">
+                {resumeData.education.degree}
+                {resumeData.education.major ? ` · ${resumeData.education.major}` : ''}
+              </p>
+            </div>
+            <p className="resume-print-meta">{resumeData.education.period}</p>
+          </div>
+        </article>
+      </PrintSection>
+    </article>
+  )
+}
+
 export default function Resume() {
   return (
-    <main className="resume-page mx-auto max-w-5xl rounded-lg border border-slate-200 bg-white shadow-sm print:border-0 print:shadow-none">
-      <header className="resume-section border-b border-slate-200 bg-slate-50/80 p-6 sm:p-8 print:border-b print:bg-white print:p-0 print:pb-3">
+    <>
+      <main className="resume-web-page resume-page mx-auto max-w-5xl rounded-lg border border-slate-200 bg-white shadow-sm">
+        <header className="resume-section border-b border-slate-200 bg-slate-50/80 p-6 sm:p-8 print:border-b print:bg-white print:p-0 print:pb-3">
         <div className="resume-header-row flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between print:flex-row print:gap-4">
           <div className="resume-profile-row flex flex-col gap-5 sm:flex-row sm:items-center print:flex-row print:gap-3">
             <Image
@@ -382,11 +525,13 @@ export default function Resume() {
             <CompactList items={resumeData.selfEvaluation} />
           </Section>
         </aside>
-      </div>
+        </div>
 
-      <div className="resume-actions p-6 sm:p-8 print:hidden">
-        <BackHome />
-      </div>
-    </main>
+        <div className="resume-actions p-6 sm:p-8 print:hidden">
+          <BackHome />
+        </div>
+      </main>
+      <PrintResume />
+    </>
   )
 }
