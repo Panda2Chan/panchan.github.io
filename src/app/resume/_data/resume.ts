@@ -30,7 +30,7 @@ export const resumeData: ResumeData = {
       '擅长将模糊业务需求拆解为可实现的页面结构、数据结构、验收标准和任务清单。',
       '熟悉 Spec 驱动开发 / OpenSpec 工作方式，能够先沉淀能力边界、字段映射、兼容策略，再进入实现。',
       '长期参与游戏、支付、会员、活动、数据后台、运维中台等复杂业务系统建设。',
-      '能使用 AI Agent 协作完成需求梳理、代码定位、冲突处理、兼容复核、页面检查、PDF 导出和部署交付。',
+      '能使用 AI Agent 协作完成需求梳理、代码定位、冲突处理、兼容复核、页面检查和部署交付。',
     ],
     contacts: [
       {
@@ -150,7 +150,7 @@ export const resumeData: ResumeData = {
       keywords: ['OpenSpec', 'Spec First', '数据结构', '字段映射', '兼容策略'],
       evidence: [
         '能够把页面需求拆为 TypeScript 数据模型、字段约束和渲染映射。',
-        '能够为前端实现、PDF 导出和发布验收提供同一份结构化依据。',
+        '能够为前端实现、页面验证和发布验收提供同一份结构化依据。',
       ],
     },
     {
@@ -168,11 +168,11 @@ export const resumeData: ResumeData = {
       id: 'delivery-validation',
       title: '验证与发布闭环',
       summary:
-        '关注构建、页面检查、移动端适配、PDF 导出和部署发布，避免只完成代码而未完成交付。',
-      keywords: ['构建验证', '页面检查', 'PDF 导出', 'GitHub Pages', '部署发布'],
+        '关注构建、页面检查、移动端适配和部署发布，避免只完成代码而未完成交付。',
+      keywords: ['构建验证', '页面检查', '交付验证', 'GitHub Pages', '部署发布'],
       evidence: [
-        '简历页面同步满足在线浏览和 A4 PDF 投递。',
-        '最终交付包含线上地址、GitHub 提交信息和网页端 PDF 导出能力。',
+        '能兼顾在线展示、移动端浏览和招聘投递材料的可读性。',
+        '最终交付包含线上地址、GitHub 提交信息和可复核的验收结果。',
       ],
     },
   ],
@@ -198,8 +198,8 @@ export const resumeData: ResumeData = {
     {
       id: 'verify',
       title: '验证与交付',
-      description: '执行构建、页面预览、移动端检查、PDF 导出和部署发布。',
-      outputs: ['构建结果', '线上地址', '网页导出 PDF'],
+      description: '执行构建、页面预览、移动端检查和部署发布。',
+      outputs: ['构建结果', '线上地址', '交付验证'],
     },
   ],
   experiences: [

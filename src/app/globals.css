@@ -159,7 +159,7 @@
 @media print {
   @page {
     size: A4;
-    margin: 8mm;
+    margin: 12mm 11mm;
   }
 
   html,
@@ -173,27 +173,137 @@
   }
 
   .resume-shell {
-    width: 194mm;
+    width: auto !important;
+    max-width: none !important;
+    padding: 0 !important;
   }
 
   .resume-page {
     font-family: Arial, "Microsoft YaHei", sans-serif;
-    line-height: 1.25;
+    line-height: 1.5 !important;
+    max-width: none !important;
+    width: 100% !important;
   }
 
   .resume-section {
-    break-inside: avoid;
-    padding: 1.5mm 0;
+    break-inside: auto;
+    padding: 3.5mm 0 !important;
+  }
+
+  .resume-page > .resume-section:first-child {
+    padding-top: 0 !important;
+    padding-bottom: 4mm !important;
+  }
+
+  .resume-layout,
+  .resume-highlight-grid,
+  .resume-project-grid,
+  .resume-card-grid {
+    display: block !important;
+  }
+
+  .resume-page {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .resume-layout {
+    display: contents !important;
+  }
+
+  .resume-main,
+  .resume-sidebar {
+    display: contents !important;
+  }
+
+  .resume-skills-section {
+    order: 3;
+  }
+
+  .resume-education-section {
+    order: 4;
+  }
+
+  .resume-experience-section {
+    order: 1;
+  }
+
+  .resume-project-section {
+    order: 2;
+  }
+
+  .resume-ai-section {
+    order: 5;
+  }
+
+  .resume-profile-row {
+    align-items: flex-start !important;
+    gap: 3mm !important;
+  }
+
+  .resume-header-row {
+    gap: 4mm !important;
+  }
+
+  .resume-profile-row img {
+    width: 18mm !important;
+    height: 18mm !important;
+  }
+
+  .resume-sidebar {
+    border-left: 0 !important;
+    border-top: 0 !important;
+  }
+
+  .resume-contact-list {
+    justify-content: flex-start !important;
   }
 
   .resume-card {
     break-inside: avoid;
+    page-break-inside: avoid;
     border-radius: 4px;
-    padding: 1.5mm;
+    padding: 2mm 2.5mm !important;
+    margin-top: 2mm !important;
   }
 
   .resume-block {
     break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .resume-metric-grid {
+    gap: 2mm !important;
+  }
+
+  .resume-highlight-grid > * {
+    margin-top: 2mm !important;
+  }
+
+  .resume-page h1 {
+    font-size: 18pt !important;
+    line-height: 1.2 !important;
+  }
+
+  .resume-page h2 {
+    font-size: 13pt !important;
+    line-height: 1.25 !important;
+  }
+
+  .resume-page h3 {
+    font-size: 10.5pt !important;
+    line-height: 1.35 !important;
+  }
+
+  .resume-page p,
+  .resume-page li,
+  .resume-page a {
+    font-size: 9.5pt !important;
+    line-height: 1.45 !important;
+  }
+
+  .resume-page span {
+    line-height: 1.45 !important;
   }
 
   .resume-actions {

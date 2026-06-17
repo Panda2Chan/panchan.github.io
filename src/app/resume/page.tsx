@@ -151,8 +151,8 @@ export default function Resume() {
   return (
     <main className="resume-page mx-auto max-w-5xl rounded-lg border border-slate-200 bg-white shadow-sm print:border-0 print:shadow-none">
       <header className="resume-section border-b border-slate-200 bg-slate-50/80 p-6 sm:p-8 print:border-b print:bg-white print:p-0 print:pb-3">
-        <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between print:flex-row print:gap-4">
-          <div className="flex flex-col gap-5 sm:flex-row sm:items-center print:flex-row print:gap-3">
+        <div className="resume-header-row flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between print:flex-row print:gap-4">
+          <div className="resume-profile-row flex flex-col gap-5 sm:flex-row sm:items-center print:flex-row print:gap-3">
             <Image
               alt={resumeData.profile.displayName}
               className="size-24 rounded-full border border-slate-200 object-cover print:size-16"
@@ -178,7 +178,7 @@ export default function Resume() {
             </div>
           </div>
 
-          <div className="flex flex-wrap gap-2 sm:max-w-xs sm:justify-end print:max-w-none print:gap-x-3 print:gap-y-1">
+          <div className="resume-contact-list flex flex-wrap gap-2 sm:max-w-xs sm:justify-end print:max-w-none print:gap-x-3 print:gap-y-1">
             {visibleContacts.map((contact) => (
               <ContactLink contact={contact} key={`${contact.type}-${contact.value}`} />
             ))}
@@ -189,7 +189,7 @@ export default function Resume() {
           {resumeData.profile.summary}
         </p>
 
-        <div className="mt-5 grid gap-3 sm:grid-cols-2 print:mt-3 print:grid-cols-2 print:gap-1.5">
+        <div className="resume-highlight-grid mt-5 grid gap-3 sm:grid-cols-2 print:mt-3 print:grid-cols-2 print:gap-1.5">
           {resumeData.profile.highlights.map((highlight, index) => (
             <div
               className={`rounded-md border border-slate-200 bg-white p-3 text-sm leading-6 text-slate-700 print:p-1.5 print:text-[9.5px] print:leading-4 ${index > 1 ? 'print:hidden' : ''}`}
@@ -201,14 +201,15 @@ export default function Resume() {
         </div>
       </header>
 
-      <div className="grid gap-0 lg:grid-cols-[minmax(0,1fr)_320px] print:grid-cols-[minmax(0,1fr)_250px]">
-        <div className="space-y-0">
+      <div className="resume-layout grid gap-0 lg:grid-cols-[minmax(0,1fr)_320px] print:grid-cols-[minmax(0,1fr)_250px]">
+        <div className="resume-main space-y-0">
           <Section
+            className="resume-ai-section"
             eyebrow="AI Engineering"
             icon={<Bot aria-hidden="true" className="size-5" />}
             title="AI 工程能力"
           >
-            <div className="grid gap-3 sm:grid-cols-2 print:grid-cols-2 print:gap-2">
+            <div className="resume-card-grid grid gap-3 sm:grid-cols-2 print:grid-cols-2 print:gap-2">
               {resumeData.aiCapabilities.map((capability) => (
                 <article className="resume-card" key={capability.id}>
                   <h3 className="text-base font-semibold text-slate-950 print:text-xs">{capability.title}</h3>
@@ -223,6 +224,7 @@ export default function Resume() {
           </Section>
 
           <Section
+            className="resume-experience-section"
             eyebrow="Experience"
             icon={<BriefcaseBusiness aria-hidden="true" className="size-5" />}
             title="工作经历"
@@ -245,7 +247,7 @@ export default function Resume() {
                     {experience.summary}
                   </p>
                   {experience.metrics?.length ? (
-                    <div className="mt-3 grid gap-2 sm:grid-cols-2 print:mt-2 print:grid-cols-2 print:gap-1.5">
+                    <div className="resume-metric-grid mt-3 grid gap-2 sm:grid-cols-2 print:mt-2 print:grid-cols-2 print:gap-1.5">
                       {experience.metrics.map((metric) => (
                         <div className="rounded-md bg-slate-50 p-3 print:bg-white print:p-1" key={metric.label}>
                           <p className="text-lg font-bold text-slate-950 print:text-xs">{metric.value}</p>
@@ -271,11 +273,12 @@ export default function Resume() {
           </Section>
 
           <Section
+            className="resume-project-section"
             eyebrow="Projects"
             icon={<Code2 aria-hidden="true" className="size-5" />}
             title="项目经历"
           >
-            <div className="grid gap-4 sm:grid-cols-2 print:grid-cols-2 print:gap-2">
+            <div className="resume-project-grid grid gap-4 sm:grid-cols-2 print:grid-cols-2 print:gap-2">
               {resumeData.projects.map((project, index) => (
                 <article className={`resume-card ${index > 2 ? 'print:hidden' : ''}`} key={project.id}>
                   <div className="flex items-start justify-between gap-3">
@@ -305,9 +308,9 @@ export default function Resume() {
           </Section>
         </div>
 
-        <aside className="border-t border-slate-200 lg:border-l lg:border-t-0 print:border-l print:border-t-0">
+        <aside className="resume-sidebar border-t border-slate-200 lg:border-l lg:border-t-0 print:border-l print:border-t-0">
           <Section
-            className="lg:border-t-0 print:border-t-0"
+            className="resume-skills-section lg:border-t-0 print:border-t-0"
             eyebrow="Skills"
             icon={<Sparkles aria-hidden="true" className="size-5" />}
             title="技术栈"
@@ -353,6 +356,7 @@ export default function Resume() {
           </Section>
 
           <Section
+            className="resume-education-section"
             eyebrow="Education"
             icon={<GraduationCap aria-hidden="true" className="size-5" />}
             title="教育经历"
