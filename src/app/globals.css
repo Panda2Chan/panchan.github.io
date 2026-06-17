@@ -141,3 +141,67 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  .resume-section {
+    @apply border-t border-slate-200 p-6 sm:p-8;
+  }
+
+  .resume-card {
+    @apply break-inside-avoid rounded-md border border-slate-200 bg-white p-4;
+  }
+
+  .resume-block {
+    @apply break-inside-avoid;
+  }
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 8mm;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+  }
+
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .resume-shell {
+    width: 194mm;
+  }
+
+  .resume-page {
+    font-family: Arial, "Microsoft YaHei", sans-serif;
+    line-height: 1.25;
+  }
+
+  .resume-section {
+    break-inside: avoid;
+    padding: 1.5mm 0;
+  }
+
+  .resume-card {
+    break-inside: avoid;
+    border-radius: 4px;
+    padding: 1.5mm;
+  }
+
+  .resume-block {
+    break-inside: avoid;
+  }
+
+  .resume-actions {
+    display: none !important;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
