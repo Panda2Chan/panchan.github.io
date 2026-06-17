@@ -17,6 +17,15 @@ import { resumeData } from './_data/resume'
 import type { ResumeLink, ResumeLevel } from './_data/types'
 
 const visibleContacts = resumeData.profile.contacts.filter((contact) => contact.visible)
+const repoBasePath = process.env.NEXT_PUBLIC_REPO ? `/${process.env.NEXT_PUBLIC_REPO}` : ''
+
+const withBasePath = (href: string) => {
+  if (!href.startsWith('/')) {
+    return href
+  }
+
+  return `${repoBasePath}${href}`
+}
 
 const contactIcon = (type: ResumeLink['type']) => {
   switch (type) {
@@ -55,7 +64,7 @@ function ContactLink({ contact }: { contact: ResumeLink }) {
   }
 
   return (
-    <a className={className} href={contact.href}>
+    <a className={className} href={withBasePath(contact.href)}>
       {content}
     </a>
   )
@@ -147,7 +156,7 @@ export default function Resume() {
               className="size-24 rounded-full border border-slate-200 object-cover print:size-16"
               height={96}
               priority
-              src={resumeData.profile.avatarSrc}
+              src={withBasePath(resumeData.profile.avatarSrc)}
               width={96}
             />
             <div>
