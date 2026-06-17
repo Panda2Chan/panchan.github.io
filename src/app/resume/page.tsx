@@ -3,7 +3,6 @@ import {
   Bot,
   BriefcaseBusiness,
   Code2,
-  Download,
   GraduationCap,
   Link as LinkIcon,
   Mail,
@@ -13,6 +12,7 @@ import {
   Workflow,
 } from 'lucide-react'
 import BackHome from '@/components/page/backHome'
+import ResumePrintButton from './_components/ResumePrintButton'
 import { resumeData } from './_data/resume'
 import type { ResumeLink, ResumeLevel } from './_data/types'
 
@@ -35,8 +35,6 @@ const contactIcon = (type: ResumeLink['type']) => {
       return <Mail aria-hidden="true" className="size-4" />
     case 'location':
       return <MapPin aria-hidden="true" className="size-4" />
-    case 'pdf':
-      return <Download aria-hidden="true" className="size-4" />
     default:
       return <LinkIcon aria-hidden="true" className="size-4" />
   }
@@ -58,6 +56,10 @@ function ContactLink({ contact }: { contact: ResumeLink }) {
 
   const className =
     'inline-flex min-h-9 items-center gap-2 rounded-md border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition hover:border-slate-400 hover:text-slate-950 print:min-h-0 print:border-0 print:bg-transparent print:px-0 print:py-0 print:text-[10px]'
+
+  if (contact.type === 'print') {
+    return <ResumePrintButton className={className} label={contact.value} />
+  }
 
   if (!contact.href) {
     return <span className={className}>{content}</span>

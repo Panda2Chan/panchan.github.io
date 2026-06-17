@@ -17,7 +17,7 @@ src/app/resume/page.tsx             # Render page from resumeData
 src/app/resume/layout.tsx           # Metadata and page shell
 src/app/resume/_data/resume.ts      # ResumeData constant
 src/app/resume/_data/types.ts       # TypeScript model
-public/resume.pdf                   # Optional exported PDF artifact after implementation
+src/app/resume/_components/*        # Optional client-only controls such as print/export PDF button
 ```
 
 If the implementation stays Markdown-first for one iteration, `resumeData` can still generate Markdown before passing content to `ReactMarkdown`.
@@ -31,7 +31,7 @@ export type ResumeLinkType =
   | 'email'
   | 'phone'
   | 'location'
-  | 'pdf'
+  | 'print'
   | 'other'
 
 export type ResumeLevel = 'primary' | 'secondary' | 'muted'
@@ -124,7 +124,6 @@ export interface ResumeMeta {
   description: string
   keywords: string[]
   canonicalPath: string
-  pdfFileName: string
   lastUpdated: string
 }
 
@@ -163,7 +162,6 @@ export interface ResumeData {
       "Spec Driven Development"
     ],
     "canonicalPath": "/resume",
-    "pdfFileName": "resume.pdf",
     "lastUpdated": "2026-06-17"
   },
   "profile": {
@@ -261,7 +259,7 @@ export interface ResumeData {
       "keywords": ["OpenSpec", "Spec First", "数据结构", "字段映射", "兼容策略"],
       "evidence": [
         "能够把页面需求拆为 JSON / TypeScript 数据模型。",
-        "能够为前端实现、PDF 输出和发布验收提供同一份结构化依据。"
+        "能够为前端实现、PDF 导出和发布验收提供同一份结构化依据。"
       ]
     },
     {
@@ -281,7 +279,7 @@ export interface ResumeData {
       "keywords": ["构建验证", "页面检查", "PDF 导出", "GitHub Pages", "部署发布"],
       "evidence": [
         "简历页面需同步满足在线浏览和 A4 PDF 投递。",
-        "最终交付应包含线上地址、GitHub 提交或 PR 信息、PDF 文件。"
+        "最终交付应包含线上地址、GitHub 提交或 PR 信息、网页端 PDF 导出能力。"
       ]
     }
   ],
@@ -308,7 +306,7 @@ export interface ResumeData {
       "id": "verify",
       "title": "验证与交付",
       "description": "执行构建、页面预览、移动端检查、PDF 导出和部署发布。",
-      "outputs": ["构建结果", "线上地址", "PDF 文件"]
+      "outputs": ["构建结果", "线上地址", "网页导出 PDF"]
     }
   ],
   "experiences": [
@@ -518,7 +516,7 @@ export interface ResumeData {
    - Avoid breaking inside experience/project blocks.
    - Hide navigation-only elements such as back-home buttons in print.
    - Keep font sizes readable and avoid emoji-heavy PDF output if the renderer has font issues.
-6. Export PDF from the final rendered `/resume` page and place it at `public/resume.pdf` or attach it to the issue comment, depending on delivery flow.
+6. Provide a web-page export control that triggers the browser print dialog from the final rendered `/resume` page; users can choose "Save as PDF" locally.
 
 ## Acceptance Checklist For Frontend Development
 

@@ -4,7 +4,7 @@ export type ResumeLinkType =
   | 'email'
   | 'phone'
   | 'location'
-  | 'pdf'
+  | 'print'
   | 'other'
 
 export type ResumeLevel = 'primary' | 'secondary' | 'muted'
@@ -97,7 +97,6 @@ export interface ResumeMeta {
   description: string
   keywords: string[]
   canonicalPath: string
-  pdfFileName: string
   lastUpdated: string
 }
 

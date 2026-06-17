@@ -15,7 +15,6 @@ export const resumeData: ResumeData = {
       'Spec Driven Development',
     ],
     canonicalPath: '/resume',
-    pdfFileName: 'resume.pdf',
     lastUpdated: '2026-06-17',
   },
   profile: {
@@ -63,10 +62,9 @@ export const resumeData: ResumeData = {
         visible: true,
       },
       {
-        type: 'pdf',
-        label: 'PDF',
-        value: '下载 PDF 简历',
-        href: '/resume.pdf',
+        type: 'print',
+        label: 'Export PDF',
+        value: '导出 PDF',
         visible: true,
       },
     ],
@@ -152,7 +150,7 @@ export const resumeData: ResumeData = {
       keywords: ['OpenSpec', 'Spec First', '数据结构', '字段映射', '兼容策略'],
       evidence: [
         '能够把页面需求拆为 TypeScript 数据模型、字段约束和渲染映射。',
-        '能够为前端实现、PDF 输出和发布验收提供同一份结构化依据。',
+        '能够为前端实现、PDF 导出和发布验收提供同一份结构化依据。',
       ],
     },
     {
@@ -174,7 +172,7 @@ export const resumeData: ResumeData = {
       keywords: ['构建验证', '页面检查', 'PDF 导出', 'GitHub Pages', '部署发布'],
       evidence: [
         '简历页面同步满足在线浏览和 A4 PDF 投递。',
-        '最终交付包含线上地址、GitHub 提交信息和 PDF 文件。',
+        '最终交付包含线上地址、GitHub 提交信息和网页端 PDF 导出能力。',
       ],
     },
   ],
@@ -201,7 +199,7 @@ export const resumeData: ResumeData = {
       id: 'verify',
       title: '验证与交付',
       description: '执行构建、页面预览、移动端检查、PDF 导出和部署发布。',
-      outputs: ['构建结果', '线上地址', 'PDF 文件'],
+      outputs: ['构建结果', '线上地址', '网页导出 PDF'],
     },
   ],
   experiences: [
