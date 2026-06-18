@@ -54,6 +54,66 @@ const contactText = (contact: ResumeLink) => {
   return label ? `${label}: ${contact.value}` : contact.value
 }
 
+const printEmphasisTerms = [
+  'AI Agent',
+  'AI 工具',
+  'Codex',
+  'Cursor',
+  'Golang',
+  'Jenkins CI/CD',
+  'Next.js',
+  'Node.js',
+  'OpenSpec',
+  'React Native',
+  'React',
+  'Spec 驱动开发',
+  'TypeScript',
+  'Vue3 + ECharts',
+  'Vue',
+  'pnpm + TurboRepo',
+  '6 年',
+  '40%+',
+  '30%+',
+  '500w+ / day',
+  '百万级用户',
+  '前端开发成本降低 40%',
+  '可视化分析维度扩展 3 倍',
+  '部署效率提升 60%+',
+  '需求分析',
+  '规格建模',
+  '代码实现',
+  '重构验证',
+  '交付发布',
+  '工程效率',
+  '交付确定性',
+  '数据结构',
+  '验收标准',
+  '稳定的开发流程',
+  '复杂后台业务',
+  '问题闭环',
+  '前端工程化',
+  '产品化交付',
+].sort((first, second) => second.length - first.length)
+
+const printEmphasisPattern = new RegExp(
+  `(${printEmphasisTerms.map((term) => term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})`,
+  'g',
+)
+
+function EmphasizedPrintText({ text }: { text: string }) {
+  return text.split(printEmphasisPattern).map((part, index) => {
+    if (!printEmphasisTerms.includes(part)) {
+      return part
+    }
+
+    return (
+      <strong className="resume-print-key" key={`${part}-${index}`}>
+        {part}
+      </strong>
+    )
+  })
+}
+
 const tagTone: Record<ResumeLevel, string> = {
   primary: 'border-slate-300 bg-slate-950 text-white',
   secondary: 'border-slate-200 bg-slate-100 text-slate-700',
@@ -180,7 +240,9 @@ function PrintList({ items }: { items: string[] }) {
   return (
     <ul className="resume-print-list">
       {items.map((item) => (
-        <li key={item}>{item}</li>
+        <li key={item}>
+          <EmphasizedPrintText text={item} />
+        </li>
       ))}
     </ul>
   )
@@ -203,7 +265,9 @@ function PrintResume() {
             ))}
           </div>
         </div>
-        <p className="resume-print-summary">{resumeData.profile.summary}</p>
+        <p className="resume-print-summary">
+          <EmphasizedPrintText text={resumeData.profile.summary} />
+        </p>
       </header>
 
       <PrintSection title="核心能力">
@@ -211,7 +275,7 @@ function PrintResume() {
           {resumeData.skillGroups.map((group) => (
             <p key={group.id}>
               <strong>{group.title}：</strong>
-              {group.items.join(' / ')}
+              <EmphasizedPrintText text={group.items.join(' / ')} />
             </p>
           ))}
         </div>
@@ -231,11 +295,20 @@ function PrintResume() {
                 {experience.period} · {experience.location}
               </p>
             </div>
-            <p className="resume-print-body">{experience.summary}</p>
+            <p className="resume-print-body">
+              <EmphasizedPrintText text={experience.summary} />
+            </p>
             {experience.metrics?.length ? (
-              <p className="resume-print-metrics">
-                {experience.metrics.map((metric) => `${metric.label} ${metric.value}`).join('；')}
-              </p>
+              <div className="resume-print-metrics">
+                {experience.metrics.map((metric) => (
+                  <span className="resume-print-metric" key={metric.label}>
+                    <strong>
+                      {metric.label} {metric.value}
+                    </strong>
+                    {metric.description ? ` ${metric.description}` : ''}
+                  </span>
+                ))}
+              </div>
             ) : null}
             <PrintList items={experience.achievements.slice(0, 4)} />
           </article>
@@ -252,9 +325,13 @@ function PrintResume() {
                   {project.category} · {project.role}
                 </p>
               </div>
-              <p className="resume-print-meta">{project.technologies.slice(0, 4).join(' / ')}</p>
+              <p className="resume-print-meta">
+                <EmphasizedPrintText text={project.technologies.slice(0, 4).join(' / ')} />
+              </p>
             </div>
-            <p className="resume-print-body">{project.summary}</p>
+            <p className="resume-print-body">
+              <EmphasizedPrintText text={project.summary} />
+            </p>
             <PrintList items={[...project.responsibilities, ...project.achievements].slice(0, 3)} />
           </article>
         ))}
@@ -265,10 +342,16 @@ function PrintResume() {
           {resumeData.aiCapabilities.map((capability) => (
             <article className="resume-print-ai-item" key={capability.id}>
               <h3>{capability.title}</h3>
-              <p>{capability.summary}</p>
+              <p>
+                <EmphasizedPrintText text={capability.summary} />
+              </p>
             </article>
           ))}
         </div>
+      </PrintSection>
+
+      <PrintSection title="自我评价">
+        <PrintList items={resumeData.selfEvaluation} />
       </PrintSection>
 
       <PrintSection title="教育经历">

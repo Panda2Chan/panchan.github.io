@@ -367,6 +367,7 @@ export const resumeData: ResumeData = {
       'aiCapabilities',
       'experiences',
       'projects',
+      'selfEvaluation',
       'education',
     ],
     maxPages: 2,
