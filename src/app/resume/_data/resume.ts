@@ -15,7 +15,7 @@ export const resumeData: ResumeData = {
       'Spec Driven Development',
     ],
     canonicalPath: '/resume',
-    lastUpdated: '2026-06-17',
+    lastUpdated: '2026-07-21',
   },
   profile: {
     name: '陈宣宏',
@@ -283,6 +283,32 @@ export const resumeData: ResumeData = {
   ],
   projects: [
     {
+      id: 'kol-scout',
+      name: 'KOL Scout',
+      category: 'AI KOL 发现工具 / Chrome 插件',
+      role: '个人项目 / 全栈开发',
+      technologies: [
+        'Chrome Extension MV3',
+        'JavaScript',
+        'Node.js',
+        'Tailwind CSS',
+        'OpenAI API',
+        'Redis',
+      ],
+      summary:
+        '面向出海团队的 KOL 发现与运营 Chrome 插件，覆盖 TikTok、YouTube 和 X 的创作者召回、筛选、保存与导出。',
+      responsibilities: [
+        '设计 Chrome Side Panel 交互，以及候选筛选、线索保存和 CSV 导出工作流。',
+        '构建 TikTok、YouTube、X 多平台 Provider 与公开资料补全能力。',
+        '接入 AI 搜索规划、候选清洗、质量过滤、语义评分和结果重排。',
+      ],
+      achievements: [
+        '持续迭代至 v1.3.1，完成多数据源降级、缓存、队列、鉴权和限流能力。',
+        '建立自动化测试与扩展打包流程，覆盖核心发现和发布链路。',
+      ],
+      aiRelevance: ['使用 AI 搜索规划和候选复核提升跨平台 KOL 召回质量。'],
+    },
+    {
       id: 'mtpay-wallet',
       name: 'MTPay 钱包',
       category: '移动端钱包',
@@ -357,7 +383,7 @@ export const resumeData: ResumeData = {
     '关注工程效率和交付确定性，习惯先明确需求、数据结构和验收标准再进入实现。',
     '乐于尝试 AI 工具与 Agent 协作方式，能把新工具转化为稳定的开发流程。',
     '熟悉复杂后台业务，能在前端、接口、数据和部署之间快速建立问题闭环。',
-    '保持持续学习，关注 GitHub、前端工程化、AI 编程工具和产品化交付实践。',
+    'V2EX 论坛活跃用户，保持持续学习，关注 GitHub、前端工程化、AI 编程工具和产品化交付实践。',
   ],
   print: {
     format: 'A4',
