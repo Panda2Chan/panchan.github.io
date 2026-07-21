@@ -11,14 +11,20 @@ import {
   Sparkles,
   Workflow,
 } from 'lucide-react'
+import ReactMarkdown, { defaultUrlTransform } from 'react-markdown'
+import rehypeHighlight from 'rehype-highlight'
+import remarkGfm from 'remark-gfm'
 import BackHome from '@/components/page/backHome'
 import ResumePrintButton from './_components/ResumePrintButton'
 import { resumeData } from './_data/resume'
 import type { ResumeLink, ResumeLevel } from './_data/types'
+import { buildResumeMarkdown } from './_lib/buildResumeMarkdown'
 
 const visibleContacts = resumeData.profile.contacts.filter((contact) => contact.visible)
-const printableContacts = visibleContacts.filter((contact) => contact.type !== 'print')
 const repoBasePath = process.env.NEXT_PUBLIC_REPO ? `/${process.env.NEXT_PUBLIC_REPO}` : ''
+
+const resumeUrlTransform = (url: string) =>
+  url.toLowerCase().startsWith('tel:') ? url : defaultUrlTransform(url)
 
 const withBasePath = (href: string) => {
   if (!href.startsWith('/')) {
@@ -39,79 +45,6 @@ const contactIcon = (type: ResumeLink['type']) => {
     default:
       return <LinkIcon aria-hidden="true" className="size-4" />
   }
-}
-
-const printableContactLabel: Partial<Record<ResumeLink['type'], string>> = {
-  email: '邮箱',
-  github: 'GitHub',
-  location: '城市',
-  phone: '电话',
-}
-
-const contactText = (contact: ResumeLink) => {
-  const label = printableContactLabel[contact.type]
-
-  return label ? `${label}: ${contact.value}` : contact.value
-}
-
-const printEmphasisTerms = [
-  'AI Agent',
-  'AI 工具',
-  'Codex',
-  'Cursor',
-  'Golang',
-  'Jenkins CI/CD',
-  'Next.js',
-  'Node.js',
-  'OpenSpec',
-  'React Native',
-  'React',
-  'Spec 驱动开发',
-  'TypeScript',
-  'Vue3 + ECharts',
-  'Vue',
-  'pnpm + TurboRepo',
-  '6 年',
-  '40%+',
-  '30%+',
-  '500w+ / day',
-  '百万级用户',
-  '前端开发成本降低 40%',
-  '可视化分析维度扩展 3 倍',
-  '部署效率提升 60%+',
-  '需求分析',
-  '规格建模',
-  '代码实现',
-  '重构验证',
-  '交付发布',
-  '工程效率',
-  '交付确定性',
-  '数据结构',
-  '验收标准',
-  '稳定的开发流程',
-  '复杂后台业务',
-  '问题闭环',
-  '前端工程化',
-  '产品化交付',
-].sort((first, second) => second.length - first.length)
-
-const printEmphasisPattern = new RegExp(
-  `(${printEmphasisTerms.map((term) => term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})`,
-  'g',
-)
-
-function EmphasizedPrintText({ text }: { text: string }) {
-  return text.split(printEmphasisPattern).map((part, index) => {
-    if (!printEmphasisTerms.includes(part)) {
-      return part
-    }
-
-    return (
-      <strong className="resume-print-key" key={`${part}-${index}`}>
-        {part}
-      </strong>
-    )
-  })
 }
 
 const tagTone: Record<ResumeLevel, string> = {
@@ -221,153 +154,31 @@ function CompactList({
   )
 }
 
-function PrintSection({
-  children,
-  title,
-}: {
-  children: React.ReactNode
-  title: string
-}) {
-  return (
-    <section className="resume-print-section">
-      <h2 className="resume-print-section-title">{title}</h2>
-      {children}
-    </section>
-  )
-}
-
-function PrintList({ items }: { items: string[] }) {
-  return (
-    <ul className="resume-print-list">
-      {items.map((item) => (
-        <li key={item}>
-          <EmphasizedPrintText text={item} />
-        </li>
-      ))}
-    </ul>
-  )
-}
-
 function PrintResume() {
   return (
-    <article className="resume-print-page" aria-label="PDF 简历">
-      <header className="resume-print-header">
-        <div className="resume-print-heading">
-          <div>
-            <h1 className="resume-print-name">{resumeData.profile.displayName}</h1>
-            <p className="resume-print-title">
-              {resumeData.profile.title} · {resumeData.profile.location} · {resumeData.profile.yearsOfExperience} 年经验
-            </p>
-          </div>
-          <div className="resume-print-contact">
-            {printableContacts.map((contact) => (
-              <span key={`${contact.type}-${contact.value}`}>{contactText(contact)}</span>
-            ))}
-          </div>
-        </div>
-        <p className="resume-print-summary">
-          <EmphasizedPrintText text={resumeData.profile.summary} />
-        </p>
-      </header>
-
-      <PrintSection title="核心能力">
-        <div className="resume-print-skill-grid">
-          {resumeData.skillGroups.map((group) => (
-            <p key={group.id}>
-              <strong>{group.title}：</strong>
-              <EmphasizedPrintText text={group.items.join(' / ')} />
-            </p>
-          ))}
-        </div>
-      </PrintSection>
-
-      <PrintSection title="工作经历">
-        {resumeData.experiences.map((experience) => (
-          <article className="resume-print-item" key={experience.id}>
-            <div className="resume-print-item-head">
-              <div>
-                <h3 className="resume-print-item-title">{experience.company}</h3>
-                <p className="resume-print-subtitle">
-                  {experience.role} · {experience.roleScope} · {experience.industry}
-                </p>
-              </div>
-              <p className="resume-print-meta">
-                {experience.period} · {experience.location}
-              </p>
-            </div>
-            <p className="resume-print-body">
-              <EmphasizedPrintText text={experience.summary} />
-            </p>
-            {experience.metrics?.length ? (
-              <div className="resume-print-metrics">
-                {experience.metrics.map((metric) => (
-                  <span className="resume-print-metric" key={metric.label}>
-                    <strong>
-                      {metric.label} {metric.value}
-                    </strong>
-                    {metric.description ? ` ${metric.description}` : ''}
-                  </span>
-                ))}
-              </div>
-            ) : null}
-            <PrintList items={experience.achievements.slice(0, 4)} />
-          </article>
-        ))}
-      </PrintSection>
-
-      <PrintSection title="项目经历">
-        {resumeData.projects.map((project) => (
-          <article className="resume-print-item" key={project.id}>
-            <div className="resume-print-item-head">
-              <div>
-                <h3 className="resume-print-item-title">{project.name}</h3>
-                <p className="resume-print-subtitle">
-                  {project.category} · {project.role}
-                </p>
-              </div>
-              <p className="resume-print-meta">
-                <EmphasizedPrintText text={project.technologies.slice(0, 4).join(' / ')} />
-              </p>
-            </div>
-            <p className="resume-print-body">
-              <EmphasizedPrintText text={project.summary} />
-            </p>
-            <PrintList items={[...project.responsibilities, ...project.achievements].slice(0, 3)} />
-          </article>
-        ))}
-      </PrintSection>
-
-      <PrintSection title="AI / Spec 工程能力">
-        <div className="resume-print-ai-grid">
-          {resumeData.aiCapabilities.map((capability) => (
-            <article className="resume-print-ai-item" key={capability.id}>
-              <h3>{capability.title}</h3>
-              <p>
-                <EmphasizedPrintText text={capability.summary} />
-              </p>
-            </article>
-          ))}
-        </div>
-      </PrintSection>
-
-      <PrintSection title="自我评价">
-        <PrintList items={resumeData.selfEvaluation} />
-      </PrintSection>
-
-      <PrintSection title="教育经历">
-        <article className="resume-print-item">
-          <div className="resume-print-item-head">
-            <div>
-              <h3 className="resume-print-item-title">{resumeData.education.school}</h3>
-              <p className="resume-print-subtitle">
-                {resumeData.education.degree}
-                {resumeData.education.major ? ` · ${resumeData.education.major}` : ''}
-              </p>
-            </div>
-            <p className="resume-print-meta">{resumeData.education.period}</p>
-          </div>
-        </article>
-      </PrintSection>
+    <article
+      aria-label="PDF 简历"
+      className="resume-print-page prose mx-auto my-10 max-w-3xl rounded-md bg-white p-6"
+    >
+      <div className="flex flex-col items-center justify-center gap-2">
+        <Image
+          alt={resumeData.profile.displayName}
+          className="mx-auto my-4 size-24 rounded-full"
+          height={96}
+          src={withBasePath(resumeData.profile.avatarSrc)}
+          width={96}
+        />
+        <span className="text-4xl font-bold">
+          👋 {resumeData.profile.displayName}
+        </span>
+      </div>
+      <ReactMarkdown
+        rehypePlugins={[rehypeHighlight]}
+        remarkPlugins={[remarkGfm]}
+        urlTransform={resumeUrlTransform}
+      >
+        {buildResumeMarkdown(resumeData)}
+      </ReactMarkdown>
     </article>
   )
 }
