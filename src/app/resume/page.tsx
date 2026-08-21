@@ -333,9 +333,9 @@ export default function Resume() {
                     {project.summary}
                   </p>
                   <CompactList items={[...project.responsibilities, ...project.achievements]} printLimit={3} />
-                  {project.aiRelevance?.length ? (
+                  {project.projectHighlight ? (
                     <div className="mt-3 rounded-md bg-slate-50 p-3 text-xs leading-5 text-slate-600 print:hidden">
-                      {project.aiRelevance.join(' ')}
+                      {project.projectHighlight}
                     </div>
                   ) : null}
                   <TagList items={project.technologies} printLimit={5} />

@@ -222,9 +222,8 @@ export function buildResumeMarkdown(data: ResumeData): string {
     )
     pushList(lines, [...project.responsibilities, ...project.achievements], '  ')
 
-    if (project.aiRelevance?.length) {
-      lines.push('- **AI 相关**:')
-      pushList(lines, project.aiRelevance, '  ')
+    if (project.projectHighlight) {
+      lines.push(`- **项目亮点**: ${escapeMarkdownInline(project.projectHighlight)}`)
     }
 
     const visibleProjectLinks = project.links?.filter((link) => link.visible) ?? []

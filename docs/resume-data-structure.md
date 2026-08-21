@@ -108,7 +108,7 @@ export interface ResumeProject {
   summary: string
   responsibilities: string[]
   achievements: string[]
-  aiRelevance?: string[]
+  projectHighlight?: string
   links?: ResumeLink[]
 }
 
@@ -373,6 +373,31 @@ export interface ResumeData {
   ],
   "projects": [
     {
+      "id": "kol-scout",
+      "name": "KOL Scout",
+      "category": "AI KOL 发现工具 / Chrome 插件",
+      "role": "个人项目 / 全栈开发",
+      "technologies": [
+        "Chrome Extension MV3",
+        "JavaScript",
+        "Node.js",
+        "Tailwind CSS",
+        "OpenAI API",
+        "Redis"
+      ],
+      "summary": "面向出海团队的 KOL 发现与运营 Chrome 插件，覆盖 TikTok、YouTube 和 X 的创作者召回、筛选、保存与导出。",
+      "responsibilities": [
+        "设计 Chrome Side Panel 交互，以及候选筛选、线索保存和 CSV 导出工作流。",
+        "构建 TikTok、YouTube、X 多平台 Provider 与公开资料补全能力。",
+        "接入 AI 搜索规划、候选清洗、质量过滤、语义评分和结果重排。"
+      ],
+      "achievements": [
+        "持续迭代至 v1.3.1，完成多数据源降级、缓存、队列、鉴权和限流能力。",
+        "建立自动化测试与扩展打包流程，覆盖核心发现和发布链路。"
+      ],
+      "projectHighlight": "构建覆盖跨平台搜索、智能筛选、线索管理和结果导出的 KOL 发现闭环。"
+    },
+    {
       "id": "mtpay-wallet",
       "name": "MTPay 钱包",
       "category": "移动端钱包",
@@ -388,9 +413,7 @@ export interface ResumeData {
         "组件复用率提升 40%+。",
         "减少表单和交互状态异常。"
       ],
-      "aiRelevance": [
-        "适合通过 AI 辅助梳理组件 API、状态边界和页面复用策略。"
-      ]
+      "projectHighlight": "围绕钱包核心交易流程沉淀可复用组件体系，统一表单、弹窗与状态交互。"
     },
     {
       "id": "campaign-pages",
@@ -408,9 +431,7 @@ export interface ResumeData {
         "提升页面加载速度和搜索/社媒展示质量。",
         "沉淀可复用的落地页实现模式。"
       ],
-      "aiRelevance": [
-        "可使用 AI 快速生成页面草案、检查 metadata/OG 配置、复核多语言文案。"
-      ]
+      "projectHighlight": "形成兼顾多语言、SEO、社媒传播与首屏性能的海外游戏营销页面交付体系。"
     },
     {
       "id": "game-admin-systems",
@@ -429,9 +450,7 @@ export interface ResumeData {
         "可视化分析维度扩展 3 倍。",
         "提升后台系统一致性、可维护性和问题排查效率。"
       ],
-      "aiRelevance": [
-        "适合体现 AI 辅助字段迁移、兼容改造、隐藏调用点检查和接口流向梳理能力。"
-      ]
+      "projectHighlight": "建设覆盖配置、权限、用户、交易、客服与数据分析的一体化游戏运营后台。"
     },
     {
       "id": "sre-platform",
@@ -449,9 +468,7 @@ export interface ResumeData {
         "部署效率提升 60%+。",
         "提升异常发现和问题定位效率。"
       ],
-      "aiRelevance": [
-        "适合体现 AI 辅助部署方案整理、异常日志分析和发布流程验证。"
-      ]
+      "projectHighlight": "打通持续部署、监控告警与日志分析链路，提升发布效率和故障定位能力。"
     }
   ],
   "education": {
