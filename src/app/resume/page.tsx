@@ -160,18 +160,14 @@ function PrintResume() {
       aria-label="PDF 简历"
       className="resume-print-page prose mx-auto my-10 max-w-3xl rounded-md bg-white p-6"
     >
-      <div className="flex flex-col items-center justify-center gap-2">
-        <Image
-          alt={resumeData.profile.displayName}
-          className="mx-auto my-4 size-24 rounded-full"
-          height={96}
-          src={withBasePath(resumeData.profile.avatarSrc)}
-          width={96}
-        />
-        <span className="text-4xl font-bold">
-          👋 {resumeData.profile.displayName}
-        </span>
-      </div>
+      <header className="mb-6 text-center">
+        <h1 className="m-0 text-4xl font-bold text-slate-950">
+          {resumeData.profile.name}
+        </h1>
+        <p className="mb-0 mt-2 text-lg font-medium text-slate-700">
+          {resumeData.profile.title}
+        </p>
+      </header>
       <ReactMarkdown
         rehypePlugins={[rehypeHighlight]}
         remarkPlugins={[remarkGfm]}
