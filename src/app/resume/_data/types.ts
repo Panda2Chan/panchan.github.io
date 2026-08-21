@@ -81,7 +81,7 @@ export interface ResumeProject {
   summary: string
   responsibilities: string[]
   achievements: string[]
-  aiRelevance?: string[]
+  projectHighlight?: string
   links?: ResumeLink[]
 }
 

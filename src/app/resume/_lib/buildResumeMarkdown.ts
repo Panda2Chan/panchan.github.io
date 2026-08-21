@@ -116,38 +116,42 @@ export function buildResumeMarkdown(data: ResumeData): string {
     (contact) => !['phone', 'email', 'github', 'location'].includes(contact.type),
   )
   const currentCompany = data.experiences[0]?.company
-  const lines: string[] = ['---', '', `### ${escapeMarkdownInline(profile.title)}`, '']
+  const lines: string[] = ['---', '']
 
   lines.push(
-    `- 📍 ${escapeMarkdownInline(profile.location)}`,
-    `- 📅 工作时长：${profile.yearsOfExperience}年`,
+    `- **所在地**: ${escapeMarkdownInline(profile.location)}`,
+    `- **工作经验**: ${profile.yearsOfExperience}年`,
   )
 
   if (currentCompany) {
-    lines.push(`- 💼 ${escapeMarkdownInline(currentCompany)}`)
+    lines.push(`- **当前公司**: ${escapeMarkdownInline(currentCompany)}`)
   }
 
   phones.forEach((contact) => {
-    lines.push(`- 📞 ${buildContactLink(contact)}`)
+    lines.push(`- **电话**: ${buildContactLink(contact)}`)
   })
 
   if (emails.length > 0) {
-    lines.push(`- 📮 ${emails.map((contact) => buildContactLink(contact)).join(' | ')}`)
+    lines.push(
+      `- **邮箱**: ${emails.map((contact) => buildContactLink(contact)).join(' | ')}`,
+    )
   }
 
   githubLinks.forEach((contact) => {
-    lines.push(`- 💻: ${buildContactLink(contact, contact.href ?? contact.value)}`)
+    lines.push(
+      `- **GitHub**: ${buildContactLink(contact, contact.href ?? contact.value)}`,
+    )
   })
 
   otherLinks.forEach((contact) => {
-    lines.push(`- 🔗 ${buildContactLink(contact)}`)
+    lines.push(`- **链接**: ${buildContactLink(contact)}`)
   })
   lines.push('')
 
-  pushSection(lines, '📝 个人简介')
+  pushSection(lines, '个人简介')
   pushList(lines, [profile.summary, ...profile.highlights])
 
-  pushSection(lines, '🛠 技能栈')
+  pushSection(lines, '技能栈')
   data.skillGroups.forEach((group) => {
     lines.push(
       `- **${escapeMarkdownInline(group.title)}**: ${escapeMarkdownInline(group.items.join(', '))}`,
@@ -155,7 +159,7 @@ export function buildResumeMarkdown(data: ResumeData): string {
   })
   lines.push('')
 
-  pushSection(lines, '🤖 AI / Spec 工程能力')
+  pushSection(lines, 'AI / Spec 工程能力')
   data.aiCapabilities.forEach((capability) => {
     lines.push(
       `### ${escapeMarkdownInline(capability.title)}`,
@@ -178,7 +182,7 @@ export function buildResumeMarkdown(data: ResumeData): string {
     lines.push('')
   }
 
-  pushSection(lines, '💼 工作经历')
+  pushSection(lines, '工作经历')
   data.experiences.forEach((experience) => {
     lines.push(
       `### ${joinDetails([experience.company, experience.location, experience.industry])}`,
@@ -209,7 +213,7 @@ export function buildResumeMarkdown(data: ResumeData): string {
     )
   })
 
-  pushSection(lines, '📂 项目经验')
+  pushSection(lines, '项目经验')
   data.projects.forEach((project) => {
     lines.push(
       `### ${escapeMarkdownInline(project.name)}`,
@@ -222,9 +226,8 @@ export function buildResumeMarkdown(data: ResumeData): string {
     )
     pushList(lines, [...project.responsibilities, ...project.achievements], '  ')
 
-    if (project.aiRelevance?.length) {
-      lines.push('- **AI 相关**:')
-      pushList(lines, project.aiRelevance, '  ')
+    if (project.projectHighlight) {
+      lines.push(`- **项目亮点**: ${escapeMarkdownInline(project.projectHighlight)}`)
     }
 
     const visibleProjectLinks = project.links?.filter((link) => link.visible) ?? []
@@ -237,7 +240,7 @@ export function buildResumeMarkdown(data: ResumeData): string {
     }
   })
 
-  pushSection(lines, '🎓 教育经历')
+  pushSection(lines, '教育经历')
   lines.push(
     `- ${joinDetails([
       data.education.degree,
@@ -248,7 +251,7 @@ export function buildResumeMarkdown(data: ResumeData): string {
     '',
   )
 
-  pushSection(lines, '🤔 自我评价')
+  pushSection(lines, '自我评价')
   pushList(lines, data.selfEvaluation)
 
   return `${lines.join('\n').trim()}\n`
