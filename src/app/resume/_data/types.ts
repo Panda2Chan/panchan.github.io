@@ -50,13 +50,6 @@ export interface ResumeAiCapability {
   evidence: string[]
 }
 
-export interface ResumeWorkflowStep {
-  id: string
-  title: string
-  description: string
-  outputs: string[]
-}
-
 export interface ResumeExperience {
   id: string
   company: string
@@ -105,7 +98,6 @@ export interface ResumeData {
   profile: ResumeProfile
   skillGroups: ResumeSkillGroup[]
   aiCapabilities: ResumeAiCapability[]
-  aiWorkflow: ResumeWorkflowStep[]
   experiences: ResumeExperience[]
   projects: ResumeProject[]
   education: ResumeEducation

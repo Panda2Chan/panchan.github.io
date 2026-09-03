@@ -189,9 +189,11 @@
 
   .resume-print-page {
     display: block !important;
+    margin-bottom: 0;
     margin-left: auto;
     margin-right: auto;
     overflow-wrap: anywhere;
+    padding-bottom: 0;
   }
 
   .resume-print-page h2,

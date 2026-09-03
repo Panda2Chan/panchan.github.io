@@ -8,6 +8,8 @@
     "start": "next start",
     "ssg": "npx serve@latest out",
     "lint": "eslint",
+    "check:resume-content": "node scripts/check-resume-public-content.mjs",
+    "test:resume-content": "NEXT_PUBLIC_REPO=panchan.github.io pnpm run build && pnpm run check:resume-content",
     "preview": "pnpm run build && pnpm run ssg",
     "deploy": "NEXT_PUBLIC_REPO=panchan.github.io next build --turbopack && touch ./out/.nojekyll && gh-pages -d out"
   },

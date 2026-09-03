@@ -171,17 +171,6 @@ export function buildResumeMarkdown(data: ResumeData): string {
     pushList(lines, capability.evidence, '  ')
   })
 
-  if (data.aiWorkflow.length > 0) {
-    lines.push('### Spec / Agent 工作流', '')
-    data.aiWorkflow.forEach((step, index) => {
-      lines.push(
-        `${index + 1}. **${escapeMarkdownInline(step.title)}**: ${emphasizeMarkdown(step.description)}`,
-        `   - **产出**: ${escapeMarkdownInline(step.outputs.join(' / '))}`,
-      )
-    })
-    lines.push('')
-  }
-
   pushSection(lines, '工作经历')
   data.experiences.forEach((experience) => {
     lines.push(

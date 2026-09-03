@@ -9,7 +9,6 @@ import {
   MapPin,
   Phone,
   Sparkles,
-  Workflow,
 } from 'lucide-react'
 import ReactMarkdown, { defaultUrlTransform } from 'react-markdown'
 import rehypeHighlight from 'rehype-highlight'
@@ -358,34 +357,6 @@ export default function Resume() {
                 </div>
               ))}
             </div>
-          </Section>
-
-          <Section
-            className="print:hidden"
-            eyebrow="Workflow"
-            icon={<Workflow aria-hidden="true" className="size-5" />}
-            title="Spec / Agent 工作流"
-          >
-            <ol className="space-y-3 print:space-y-1.5">
-              {resumeData.aiWorkflow.map((step, index) => (
-                <li className="resume-block" key={step.id}>
-                  <div className="flex gap-3">
-                    <span className="grid size-7 shrink-0 place-items-center rounded-md bg-slate-950 text-xs font-bold text-white print:size-5 print:text-[9px]">
-                      {index + 1}
-                    </span>
-                    <div>
-                      <h3 className="text-sm font-semibold text-slate-950 print:text-[10px]">{step.title}</h3>
-                      <p className="mt-1 text-xs leading-5 text-slate-600 print:mt-0 print:text-[9px] print:leading-4">
-                        {step.description}
-                      </p>
-                      <p className="mt-2 text-xs text-slate-500 print:mt-0.5 print:text-[8.5px]">
-                        {step.outputs.join(' / ')}
-                      </p>
-                    </div>
-                  </div>
-                </li>
-              ))}
-            </ol>
           </Section>
 
           <Section
