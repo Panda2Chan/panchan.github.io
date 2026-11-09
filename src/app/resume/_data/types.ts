@@ -15,6 +15,7 @@ export interface ResumeLink {
   value: string
   href?: string
   visible: boolean
+  webVisible?: boolean
 }
 
 export interface ResumeMetric {
