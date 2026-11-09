@@ -20,7 +20,7 @@ import { resumeData } from './_data/resume'
 import type { ResumeLink, ResumeLevel } from './_data/types'
 import { buildResumeMarkdown } from './_lib/buildResumeMarkdown'
 
-const visibleContacts = resumeData.profile.contacts.filter((contact) => contact.visible)
+const visibleContacts = resumeData.profile.contacts.filter((contact) => contact.visible && contact.webVisible !== false)
 const repoBasePath = process.env.NEXT_PUBLIC_REPO ? `/${process.env.NEXT_PUBLIC_REPO}` : ''
 
 const resumeUrlTransform = (url: string) =>
