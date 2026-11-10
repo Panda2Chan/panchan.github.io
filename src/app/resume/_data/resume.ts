@@ -306,7 +306,6 @@ export const resumeData: ResumeData = {
         '持续迭代至 v1.3.1，完成多数据源降级、缓存、队列、鉴权和限流能力。',
         '建立自动化测试与扩展打包流程，覆盖核心发现和发布链路。',
       ],
-      aiRelevance: ['使用 AI 搜索规划和候选复核提升跨平台 KOL 召回质量。'],
     },
     {
       id: 'mtpay-wallet',
@@ -321,7 +320,6 @@ export const resumeData: ResumeData = {
         '参与用户登录注册、资产管理、订单交易等业务页面开发。',
       ],
       achievements: ['组件复用率提升 40%+。', '减少表单和交互状态异常。'],
-      aiRelevance: ['适合通过 AI 辅助梳理组件 API、状态边界和页面复用策略。'],
     },
     {
       id: 'campaign-pages',
@@ -336,7 +334,6 @@ export const resumeData: ResumeData = {
         '优化首屏性能与构建发布流程。',
       ],
       achievements: ['提升页面加载速度和搜索/社媒展示质量。', '沉淀可复用的落地页实现模式。'],
-      aiRelevance: ['可使用 AI 快速生成页面草案、检查 metadata/OG 配置、复核多语言文案。'],
     },
     {
       id: 'game-admin-systems',
@@ -355,7 +352,6 @@ export const resumeData: ResumeData = {
         '可视化分析维度扩展 3 倍。',
         '提升后台系统一致性、可维护性和问题排查效率。',
       ],
-      aiRelevance: ['适合体现 AI 辅助字段迁移、兼容改造、隐藏调用点检查和接口流向梳理能力。'],
     },
     {
       id: 'sre-platform',
@@ -370,7 +366,6 @@ export const resumeData: ResumeData = {
         '优化部署过程中的状态展示和异常排查体验。',
       ],
       achievements: ['部署效率提升 60%+。', '提升异常发现和问题定位效率。'],
-      aiRelevance: ['适合体现 AI 辅助部署方案整理、异常日志分析和发布流程验证。'],
     },
   ],
   education: {
