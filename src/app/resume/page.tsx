@@ -9,7 +9,6 @@ import {
   MapPin,
   Phone,
   Sparkles,
-  Workflow,
 } from 'lucide-react'
 import ReactMarkdown, { defaultUrlTransform } from 'react-markdown'
 import rehypeHighlight from 'rehype-highlight'
@@ -160,18 +159,14 @@ function PrintResume() {
       aria-label="PDF 简历"
       className="resume-print-page prose mx-auto my-10 max-w-3xl rounded-md bg-white p-6"
     >
-      <div className="flex flex-col items-center justify-center gap-2">
-        <Image
-          alt={resumeData.profile.displayName}
-          className="mx-auto my-4 size-24 rounded-full"
-          height={96}
-          src={withBasePath(resumeData.profile.avatarSrc)}
-          width={96}
-        />
-        <span className="text-4xl font-bold">
-          👋 {resumeData.profile.displayName}
-        </span>
-      </div>
+      <header className="mb-6 text-center">
+        <h1 className="m-0 text-4xl font-bold text-slate-950">
+          {resumeData.profile.name}
+        </h1>
+        <p className="mb-0 mt-2 text-lg font-medium text-slate-700">
+          {resumeData.profile.title}
+        </p>
+      </header>
       <ReactMarkdown
         rehypePlugins={[rehypeHighlight]}
         remarkPlugins={[remarkGfm]}
@@ -333,9 +328,9 @@ export default function Resume() {
                     {project.summary}
                   </p>
                   <CompactList items={[...project.responsibilities, ...project.achievements]} printLimit={3} />
-                  {project.aiRelevance?.length ? (
+                  {project.projectHighlight ? (
                     <div className="mt-3 rounded-md bg-slate-50 p-3 text-xs leading-5 text-slate-600 print:hidden">
-                      {project.aiRelevance.join(' ')}
+                      {project.projectHighlight}
                     </div>
                   ) : null}
                   <TagList items={project.technologies} printLimit={5} />
@@ -362,34 +357,6 @@ export default function Resume() {
                 </div>
               ))}
             </div>
-          </Section>
-
-          <Section
-            className="print:hidden"
-            eyebrow="Workflow"
-            icon={<Workflow aria-hidden="true" className="size-5" />}
-            title="Spec / Agent 工作流"
-          >
-            <ol className="space-y-3 print:space-y-1.5">
-              {resumeData.aiWorkflow.map((step, index) => (
-                <li className="resume-block" key={step.id}>
-                  <div className="flex gap-3">
-                    <span className="grid size-7 shrink-0 place-items-center rounded-md bg-slate-950 text-xs font-bold text-white print:size-5 print:text-[9px]">
-                      {index + 1}
-                    </span>
-                    <div>
-                      <h3 className="text-sm font-semibold text-slate-950 print:text-[10px]">{step.title}</h3>
-                      <p className="mt-1 text-xs leading-5 text-slate-600 print:mt-0 print:text-[9px] print:leading-4">
-                        {step.description}
-                      </p>
-                      <p className="mt-2 text-xs text-slate-500 print:mt-0.5 print:text-[8.5px]">
-                        {step.outputs.join(' / ')}
-                      </p>
-                    </div>
-                  </div>
-                </li>
-              ))}
-            </ol>
           </Section>
 
           <Section

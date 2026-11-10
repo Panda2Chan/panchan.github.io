@@ -77,13 +77,6 @@ export interface ResumeAiCapability {
   evidence: string[]
 }
 
-export interface ResumeWorkflowStep {
-  id: string
-  title: string
-  description: string
-  outputs: string[]
-}
-
 export interface ResumeExperience {
   id: string
   company: string
@@ -108,7 +101,7 @@ export interface ResumeProject {
   summary: string
   responsibilities: string[]
   achievements: string[]
-  aiRelevance?: string[]
+  projectHighlight?: string
   links?: ResumeLink[]
 }
 
@@ -132,7 +125,6 @@ export interface ResumeData {
   profile: ResumeProfile
   skillGroups: ResumeSkillGroup[]
   aiCapabilities: ResumeAiCapability[]
-  aiWorkflow: ResumeWorkflowStep[]
   experiences: ResumeExperience[]
   projects: ResumeProject[]
   education: ResumeEducation
@@ -237,76 +229,50 @@ export interface ResumeData {
     {
       "id": "ai-tools",
       "title": "AI 工具链",
-      "items": ["Codex", "Cursor", "ChatGPT", "v0", "Grok", "OpenSpec", "AI Agent 协作"],
+      "items": ["Codex", "Claude", "OpenSpec", "Superpowers", "Cursor", "ChatGPT", "v0", "Grok", "AI Agent 协作"],
       "level": "primary"
     }
   ],
   "aiCapabilities": [
     {
-      "id": "requirement-analysis",
-      "title": "AI 辅助需求理解",
-      "summary": "基于产品文档、历史任务、接口文档和代码上下文，将高层需求转化为开发可执行信息。",
-      "keywords": ["需求分析", "上下文读取", "任务拆解", "验收标准"],
+      "id": "codex-claude-collaboration",
+      "title": "Codex / Claude 协作开发",
+      "summary": "日常使用 Codex 与 Claude 辅助代码检索、方案对比和重复性编码，缩短人工定位、初稿整理与回归核对时间。",
+      "keywords": ["Codex", "Claude", "代码检索", "方案对比", "影响检查"],
       "evidence": [
-        "从 Codex 历史任务中抽象简历素材，不直接暴露隐私路径和敏感信息。",
-        "在进入实现前核验项目目录、页面入口和现有约束。"
+        "在游戏管理后台等跨模块改造中，使用 Codex 与 Claude 辅助建立模块、接口和字段关联，再人工确认业务规则与影响范围。",
+        "面对 KOL Scout 的多平台 Provider、缓存、队列、鉴权和限流链路，使用 Codex 与 Claude 加快代码定位与实现比对，将精力集中在数据源降级和结果质量判断上。"
       ]
     },
     {
-      "id": "spec-driven-development",
-      "title": "Spec 驱动开发",
-      "summary": "通过规格先行方式明确能力边界、字段映射、兼容策略和验收条件，减少返工。",
-      "keywords": ["OpenSpec", "Spec First", "数据结构", "字段映射", "兼容策略"],
+      "id": "openspec-driven-development",
+      "title": "OpenSpec 规格驱动",
+      "summary": "在复杂改造前使用 OpenSpec 明确功能范围、数据结构、兼容策略、异常分支和验收条件，再让 AI 参与实现。",
+      "keywords": ["OpenSpec", "数据建模", "字段映射", "兼容策略", "异常分支"],
       "evidence": [
-        "能够把页面需求拆为 JSON / TypeScript 数据模型。",
-        "能够为前端实现、页面验证和发布验收提供同一份结构化依据。"
+        "针对游戏后台的模板、条件、事件和事件类型等配置能力，使用 OpenSpec 梳理数据模型及前后端映射关系，再推进页面与接口协作。",
+        "在 MTPay 登录、资产、订单和交易记录等核心路径中，借助 OpenSpec 约定组件职责与状态边界，避免 AI 修改表单或弹窗时破坏既有交互。"
       ]
     },
     {
-      "id": "agent-collaboration",
-      "title": "AI Agent 协作交付",
-      "summary": "使用多角色 Agent 完成需求、数据结构、前端实现、验证和发布的闭环协作。",
-      "keywords": ["Codex", "AI Agent", "代码定位", "冲突处理", "回归验证"],
+      "id": "superpowers-engineering-workflow",
+      "title": "Superpowers 工程工作流",
+      "summary": "通过 Superpowers 将任务拆解、测试驱动、系统化调试、代码审查和完成前验证串成固定流程，使 AI 产出可持续复核。",
+      "keywords": ["Superpowers", "TDD", "系统化调试", "代码审查", "完成前验证"],
       "evidence": [
-        "可与需求分析、数据结构分析、前端开发等角色串联交付。",
-        "适合在复杂改造中使用 AI 辅助梳理隐藏调用点、字段流向和提交路径。"
+        "处理 KOL Scout 的多数据源、缓存与队列改动时，使用 Superpowers 按失败检查、实现、审查和回归验证推进，避免多链路变更只依赖一次生成。",
+        "遇到 SRE 构建或运行异常时，按 Superpowers 的系统化调试步骤读取 Jenkins、监控和日志证据，再定位代码问题。"
       ]
     },
     {
-      "id": "delivery-validation",
-      "title": "验证与发布闭环",
-      "summary": "关注构建、页面检查、移动端适配和部署发布，避免只完成代码而未完成交付。",
-      "keywords": ["构建验证", "页面检查", "交付验证", "GitHub Pages", "部署发布"],
+      "id": "ai-error-boundary-control",
+      "title": "AI 错误边界控制",
+      "summary": "不直接采纳 AI 结论，以源码、接口和真实数据流为依据，通过类型检查、自动化测试、构建结果与关键页面复核限定错误边界。",
+      "keywords": ["源码核验", "数据流复核", "类型检查", "自动化测试", "人工决策"],
       "evidence": [
-        "能兼顾在线展示、移动端浏览和招聘投递材料的可读性。",
-        "最终交付应包含线上地址、GitHub 提交或 PR 信息和可复核的验收结果。"
+        "对跨模块改动逐项核对调用入口、字段来源和异常分支，涉及业务取舍、兼容策略和敏感操作时保留人工决策。",
+        "对 AI 生成结果执行 TypeScript 检查、自动化测试和生产构建，并复核关键页面表现，发现偏差后回到源码修正。"
       ]
-    }
-  ],
-  "aiWorkflow": [
-    {
-      "id": "discover",
-      "title": "需求与上下文读取",
-      "description": "读取 issue、产品文档、现有项目结构和相关历史记录，明确真实约束。",
-      "outputs": ["需求摘要", "约束清单", "信息缺口"]
-    },
-    {
-      "id": "spec",
-      "title": "规格与数据建模",
-      "description": "把业务表达沉淀为页面模块、数据字段、字段约束和验收标准。",
-      "outputs": ["TypeScript 类型", "JSON 数据", "页面映射规则"]
-    },
-    {
-      "id": "implement",
-      "title": "AI 辅助实现",
-      "description": "使用 AI Agent 定位改造点、生成实现方案、维护兼容路径并减少重复劳动。",
-      "outputs": ["页面代码", "样式与响应式适配", "兼容处理"]
-    },
-    {
-      "id": "verify",
-      "title": "验证与交付",
-      "description": "执行构建、页面预览、移动端检查和部署发布。",
-      "outputs": ["构建结果", "线上地址", "交付验证"]
     }
   ],
   "experiences": [
@@ -373,6 +339,31 @@ export interface ResumeData {
   ],
   "projects": [
     {
+      "id": "kol-scout",
+      "name": "KOL Scout",
+      "category": "AI KOL 发现工具 / Chrome 插件",
+      "role": "个人项目 / 全栈开发",
+      "technologies": [
+        "Chrome Extension MV3",
+        "JavaScript",
+        "Node.js",
+        "Tailwind CSS",
+        "OpenAI API",
+        "Redis"
+      ],
+      "summary": "面向出海团队的 KOL 发现与运营 Chrome 插件，覆盖 TikTok、YouTube 和 X 的创作者召回、筛选、保存与导出。",
+      "responsibilities": [
+        "设计 Chrome Side Panel 交互，以及候选筛选、线索保存和 CSV 导出工作流。",
+        "构建 TikTok、YouTube、X 多平台 Provider 与公开资料补全能力。",
+        "接入 AI 搜索规划、候选清洗、质量过滤、语义评分和结果重排。"
+      ],
+      "achievements": [
+        "持续迭代至 v1.3.1，完成多数据源降级、缓存、队列、鉴权和限流能力。",
+        "建立自动化测试与扩展打包流程，覆盖核心发现和发布链路。"
+      ],
+      "projectHighlight": "构建覆盖跨平台搜索、智能筛选、线索管理和结果导出的 KOL 发现闭环。"
+    },
+    {
       "id": "mtpay-wallet",
       "name": "MTPay 钱包",
       "category": "移动端钱包",
@@ -388,9 +379,7 @@ export interface ResumeData {
         "组件复用率提升 40%+。",
         "减少表单和交互状态异常。"
       ],
-      "aiRelevance": [
-        "适合通过 AI 辅助梳理组件 API、状态边界和页面复用策略。"
-      ]
+      "projectHighlight": "围绕钱包核心交易流程沉淀可复用组件体系，统一表单、弹窗与状态交互。"
     },
     {
       "id": "campaign-pages",
@@ -408,9 +397,7 @@ export interface ResumeData {
         "提升页面加载速度和搜索/社媒展示质量。",
         "沉淀可复用的落地页实现模式。"
       ],
-      "aiRelevance": [
-        "可使用 AI 快速生成页面草案、检查 metadata/OG 配置、复核多语言文案。"
-      ]
+      "projectHighlight": "形成兼顾多语言、SEO、社媒传播与首屏性能的海外游戏营销页面交付体系。"
     },
     {
       "id": "game-admin-systems",
@@ -429,9 +416,7 @@ export interface ResumeData {
         "可视化分析维度扩展 3 倍。",
         "提升后台系统一致性、可维护性和问题排查效率。"
       ],
-      "aiRelevance": [
-        "适合体现 AI 辅助字段迁移、兼容改造、隐藏调用点检查和接口流向梳理能力。"
-      ]
+      "projectHighlight": "建设覆盖配置、权限、用户、交易、客服与数据分析的一体化游戏运营后台。"
     },
     {
       "id": "sre-platform",
@@ -449,9 +434,7 @@ export interface ResumeData {
         "部署效率提升 60%+。",
         "提升异常发现和问题定位效率。"
       ],
-      "aiRelevance": [
-        "适合体现 AI 辅助部署方案整理、异常日志分析和发布流程验证。"
-      ]
+      "projectHighlight": "打通持续部署、监控告警与日志分析链路，提升发布效率和故障定位能力。"
     }
   ],
   "education": {
@@ -488,7 +471,6 @@ export interface ResumeData {
 | `profile` | Header + personal summary | Keep phone/email/GitHub visible. Avoid exposing local Codex paths. |
 | `skillGroups` | Skill stack | Render as grouped tags or compact lists. Keep `ai-tools` prominent. |
 | `aiCapabilities` | AI engineering capability highlights | Use cards or subsections. Each item should include evidence, not only slogans. |
-| `aiWorkflow` | Spec / AI Agent workflow | Optional on the web page. Include in PDF only if space allows. |
 | `experiences` | Work experience | Render in reverse chronological order. Show metrics close to achievements. |
 | `projects` | Project experience | Prioritize projects that support AI/spec-driven positioning. |
 | `education` | Education | Compact one-line section. |

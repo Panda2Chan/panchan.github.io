@@ -176,32 +176,6 @@ export const resumeData: ResumeData = {
       ],
     },
   ],
-  aiWorkflow: [
-    {
-      id: 'discover',
-      title: '需求与上下文读取',
-      description: '读取 issue、产品文档、现有项目结构和相关历史记录，明确真实约束。',
-      outputs: ['需求摘要', '约束清单', '信息缺口'],
-    },
-    {
-      id: 'spec',
-      title: '规格与数据建模',
-      description: '把业务表达沉淀为页面模块、数据字段、字段约束和验收标准。',
-      outputs: ['TypeScript 类型', '结构化数据', '页面映射规则'],
-    },
-    {
-      id: 'implement',
-      title: 'AI 辅助实现',
-      description: '使用 AI Agent 定位改造点、生成实现方案、维护兼容路径并减少重复劳动。',
-      outputs: ['页面代码', '样式与响应式适配', '兼容处理'],
-    },
-    {
-      id: 'verify',
-      title: '验证与交付',
-      description: '执行构建、页面预览、移动端检查和部署发布。',
-      outputs: ['构建结果', '线上地址', '交付验证'],
-    },
-  ],
   experiences: [
     {
       id: 'xmj',
