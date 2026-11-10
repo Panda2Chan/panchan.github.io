@@ -12,6 +12,8 @@ export const resumeData: ResumeData = {
       'Next.js',
       'TypeScript',
       'AI Agent',
+      'Claude',
+      'Superpowers',
       'Spec Driven Development',
     ],
     canonicalPath: '/resume',
@@ -25,7 +27,7 @@ export const resumeData: ResumeData = {
     yearsOfExperience: 6,
     avatarSrc: '/user.png',
     summary:
-      '拥有 6 年 Web 前端与后台系统开发经验，熟悉 Vue、React、Next.js、TypeScript 与 Node.js。重度使用 Codex、Cursor 等 AI 工具，将需求分析、规格建模、代码实现、重构验证和交付发布串成可复用的工程工作流。',
+      '拥有 6 年以上 Web 前端与后台系统开发经验，熟悉 Vue、React、Next.js、TypeScript 与 Node.js。重度使用 Codex、Claude、Cursor 等 AI 工具，将需求分析、规格建模、代码实现、重构验证和交付发布串成可复用的工程工作流。',
     highlights: [
       '擅长将模糊业务需求拆解为可实现的页面结构、数据结构、验收标准和任务清单。',
       '熟悉 Spec 驱动开发 / OpenSpec 工作方式，能够先沉淀能力边界、字段映射、兼容策略，再进入实现。',
@@ -39,19 +41,13 @@ export const resumeData: ResumeData = {
         value: '+86 13281260713',
         href: 'tel:+8613281260713',
         visible: true,
+        webVisible: false,
       },
       {
         type: 'email',
         label: 'Email',
         value: 'a13281260713@gmail.com',
         href: 'mailto:a13281260713@gmail.com',
-        visible: true,
-      },
-      {
-        type: 'email',
-        label: 'Email',
-        value: '812783357@qq.com',
-        href: 'mailto:812783357@qq.com',
         visible: true,
       },
       {
@@ -73,7 +69,7 @@ export const resumeData: ResumeData = {
     {
       id: 'frontend',
       title: '前端框架',
-      items: ['Vue2', 'Vue3', 'React', 'Next.js', 'React Native'],
+      items: ['React', 'Next.js', 'Vue 3', 'React Native'],
       level: 'primary',
     },
     {
@@ -87,7 +83,6 @@ export const resumeData: ResumeData = {
         'Git',
         'pnpm',
         'Vite',
-        'Webpack',
         'TurboRepo',
       ],
       level: 'primary',
@@ -99,13 +94,10 @@ export const resumeData: ResumeData = {
         'Tailwind CSS',
         'shadcn/ui',
         'Ant Design',
+        'ECharts',
         'Element UI',
         'Arco Design',
         'VXE-Table',
-        'ECharts',
-        'D3.js',
-        'Canvas',
-        'Pixi.js',
       ],
       level: 'primary',
     },
@@ -121,9 +113,9 @@ export const resumeData: ResumeData = {
       items: [
         'Codex',
         'Claude',
+        'Cursor',
         'OpenSpec',
         'Superpowers',
-        'Cursor',
         'ChatGPT',
         'v0',
         'Grok',
@@ -131,10 +123,16 @@ export const resumeData: ResumeData = {
       ],
       level: 'primary',
     },
+    {
+      id: 'legacy',
+      title: '历史 / 次要',
+      items: ['Vue 2', 'Webpack'],
+      level: 'secondary',
+    },
   ],
   aiCapabilities: [
     {
-      id: 'codex-claude-collaboration',
+      id: 'codex-claude-collab',
       title: 'Codex / Claude 协作开发',
       summary:
         '日常使用 Codex 与 Claude 辅助代码检索、方案对比和重复性编码，缩短人工定位、初稿整理与回归核对时间。',
@@ -145,7 +143,7 @@ export const resumeData: ResumeData = {
       ],
     },
     {
-      id: 'openspec-driven-development',
+      id: 'openspec-driven',
       title: 'OpenSpec 规格驱动',
       summary:
         '在复杂改造前使用 OpenSpec 明确功能范围、数据结构、兼容策略、异常分支和验收条件，再让 AI 参与实现。',
@@ -156,7 +154,7 @@ export const resumeData: ResumeData = {
       ],
     },
     {
-      id: 'superpowers-engineering-workflow',
+      id: 'superpowers-workflow',
       title: 'Superpowers 工程工作流',
       summary:
         '通过 Superpowers 将任务拆解、测试驱动、系统化调试、代码审查和完成前验证串成固定流程，使 AI 产出可持续复核。',
@@ -167,7 +165,7 @@ export const resumeData: ResumeData = {
       ],
     },
     {
-      id: 'ai-error-boundary-control',
+      id: 'ai-error-boundary',
       title: 'AI 错误边界控制',
       summary:
         '不直接采纳 AI 结论，以源码、接口和真实数据流为依据，通过类型检查、自动化测试、构建结果与关键页面复核限定错误边界。',
@@ -282,7 +280,6 @@ export const resumeData: ResumeData = {
         '持续迭代至 v1.3.1，完成多数据源降级、缓存、队列、鉴权和限流能力。',
         '建立自动化测试与扩展打包流程，覆盖核心发现和发布链路。',
       ],
-      projectHighlight: '构建覆盖跨平台搜索、智能筛选、线索管理和结果导出的 KOL 发现闭环。',
     },
     {
       id: 'mtpay-wallet',
@@ -297,7 +294,6 @@ export const resumeData: ResumeData = {
         '参与用户登录注册、资产管理、订单交易等业务页面开发。',
       ],
       achievements: ['组件复用率提升 40%+。', '减少表单和交互状态异常。'],
-      projectHighlight: '围绕钱包核心交易流程沉淀可复用组件体系，统一表单、弹窗与状态交互。',
     },
     {
       id: 'campaign-pages',
@@ -312,7 +308,6 @@ export const resumeData: ResumeData = {
         '优化首屏性能与构建发布流程。',
       ],
       achievements: ['提升页面加载速度和搜索/社媒展示质量。', '沉淀可复用的落地页实现模式。'],
-      projectHighlight: '形成兼顾多语言、SEO、社媒传播与首屏性能的海外游戏营销页面交付体系。',
     },
     {
       id: 'game-admin-systems',
@@ -331,7 +326,6 @@ export const resumeData: ResumeData = {
         '可视化分析维度扩展 3 倍。',
         '提升后台系统一致性、可维护性和问题排查效率。',
       ],
-      projectHighlight: '建设覆盖配置、权限、用户、交易、客服与数据分析的一体化游戏运营后台。',
     },
     {
       id: 'sre-platform',
@@ -346,7 +340,6 @@ export const resumeData: ResumeData = {
         '优化部署过程中的状态展示和异常排查体验。',
       ],
       achievements: ['部署效率提升 60%+。', '提升异常发现和问题定位效率。'],
-      projectHighlight: '打通持续部署、监控告警与日志分析链路，提升发布效率和故障定位能力。',
     },
   ],
   education: {
