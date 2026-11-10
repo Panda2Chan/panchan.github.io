@@ -8,6 +8,7 @@ import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button
 
 export default function Home() {
   const router = useRouter();
+  const yearsOfExperience = new Date().getFullYear() - 2020;
 
 
   const handleBtnClick = (path: string) => {
@@ -23,7 +24,7 @@ export default function Home() {
           <div className="flex flex-col items-center justify-center text-center leading-none font-semibold whitespace-pre-wrap">
             <span className="pointer-events-none z-10  mt-10 text-4xl  ">👋 嗨，欢迎来到我的主页</span>
             <span className="pointer-events-none z-10  mt-10 text-xl "  >
-              我目前正在寻找新的工作机会，我拥有五年工作经验，您可以在我的 GitHub 主页或者
+              我目前正在寻找新的工作机会，我拥有{yearsOfExperience}年工作经验，您可以在我的 GitHub 主页或者
               <Highlighter action="underline" color="#FF9800">
                 我的简历
               </Highlighter>
