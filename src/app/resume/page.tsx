@@ -303,41 +303,6 @@ export default function Resume() {
               ))}
             </div>
           </Section>
-
-          <Section
-            className="resume-project-section"
-            eyebrow="Projects"
-            icon={<Code2 aria-hidden="true" className="size-5" />}
-            title="项目经历"
-          >
-            <div className="resume-project-grid grid gap-4 sm:grid-cols-2 print:grid-cols-2 print:gap-2">
-              {resumeData.projects.map((project, index) => (
-                <article className={`resume-card ${index > 2 ? 'print:hidden' : ''}`} key={project.id}>
-                  <div className="flex items-start justify-between gap-3">
-                    <div>
-                      <h3 className="text-base font-semibold text-slate-950 print:text-xs">{project.name}</h3>
-                      <p className="mt-1 text-xs font-medium uppercase tracking-[0.18em] text-slate-500 print:text-[8px]">
-                        {project.category}
-                      </p>
-                    </div>
-                    <p className="shrink-0 rounded-md bg-slate-100 px-2 py-1 text-xs font-medium text-slate-600 print:bg-white print:p-0 print:text-[8px]">
-                      {project.role}
-                    </p>
-                  </div>
-                  <p className="mt-3 text-sm leading-6 text-slate-700 print:mt-1 print:text-[9.5px] print:leading-4">
-                    {project.summary}
-                  </p>
-                  <CompactList items={[...project.responsibilities, ...project.achievements]} printLimit={3} />
-                  {project.projectHighlight ? (
-                    <div className="mt-3 rounded-md bg-slate-50 p-3 text-xs leading-5 text-slate-600 print:hidden">
-                      {project.projectHighlight}
-                    </div>
-                  ) : null}
-                  <TagList items={project.technologies} printLimit={5} />
-                </article>
-              ))}
-            </div>
-          </Section>
         </div>
 
         <aside className="resume-sidebar border-t border-slate-200 lg:border-l lg:border-t-0 print:border-l print:border-t-0">
@@ -387,6 +352,41 @@ export default function Resume() {
           </Section>
         </aside>
         </div>
+
+        <Section
+          className="resume-project-section"
+          eyebrow="Projects"
+          icon={<Code2 aria-hidden="true" className="size-5" />}
+          title="项目经历"
+        >
+          <div className="resume-project-grid grid gap-4 sm:grid-cols-2 print:grid-cols-2 print:gap-2">
+            {resumeData.projects.map((project) => (
+              <article className="resume-card" key={project.id}>
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <h3 className="text-base font-semibold text-slate-950 print:text-xs">{project.name}</h3>
+                    <p className="mt-1 text-xs font-medium uppercase tracking-[0.18em] text-slate-500 print:text-[8px]">
+                      {project.category}
+                    </p>
+                  </div>
+                  <p className="shrink-0 rounded-md bg-slate-100 px-2 py-1 text-xs font-medium text-slate-600 print:bg-white print:p-0 print:text-[8px]">
+                    {project.role}
+                  </p>
+                </div>
+                <p className="mt-3 text-sm leading-6 text-slate-700 print:mt-1 print:text-[9.5px] print:leading-4">
+                  {project.summary}
+                </p>
+                <CompactList items={[...project.responsibilities, ...project.achievements]} printLimit={3} />
+                {project.projectHighlight ? (
+                  <div className="mt-3 rounded-md bg-slate-50 p-3 text-xs leading-5 text-slate-600 print:hidden">
+                    {project.projectHighlight}
+                  </div>
+                ) : null}
+                <TagList items={project.technologies} printLimit={5} />
+              </article>
+            ))}
+          </div>
+        </Section>
 
         <div className="resume-actions p-6 sm:p-8 print:hidden">
           <BackHome />

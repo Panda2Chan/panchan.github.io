@@ -207,3 +207,21 @@
     page-break-inside: avoid;
   }
 }
+@media print {
+  .resume-print-page {
+    max-width: none;
+    margin: 0;
+    padding: 0 3mm;
+    font-size: 10pt;
+    line-height: 1.42;
+  }
+  .resume-print-page header { margin: 0 0 4mm; }
+  .resume-print-page header h1 { font-size: 23pt; }
+  .resume-print-page hr { margin: 3mm 0; }
+  .resume-print-page h2 { margin: 3mm 0 1.5mm; font-size: 15pt; }
+  .resume-print-page h3 { margin: 2.5mm 0 1mm; font-size: 12pt; }
+  .resume-print-page p, .resume-print-page ul { margin-block: 1mm; }
+  .resume-print-page h3 + ul { break-inside: avoid-page; }
+  .resume-print-page li { margin-block: 0; }
+  .resume-print-page ul { padding-inline-start: 1.4em; }
+}

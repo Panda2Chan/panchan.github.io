@@ -17,7 +17,7 @@ export const resumeData: ResumeData = {
       'Spec Driven Development',
     ],
     canonicalPath: '/resume',
-    lastUpdated: '2026-07-21',
+    lastUpdated: '2026-11-26',
   },
   profile: {
     name: '陈宣宏',
@@ -256,6 +256,32 @@ export const resumeData: ResumeData = {
     },
   ],
   projects: [
+    {
+      id: 'easyadb',
+      name: 'EasyADB',
+      category: 'Android 设备管理工具',
+      role: '个人项目 / 桌面端开发',
+      technologies: ['React', 'C#', 'Swift', 'Go', 'ADB'],
+      summary: '为 Windows 和 macOS 开发图形化 ADB 工具，让用户在电脑上连接 Android 手机或电视、安装应用和管理已装软件。',
+      responsibilities: [
+        '将 React 界面接入两端原生客户端，统一 USB 设备选择、局域网连接和无线调试配对流程。',
+        '用 Go 解析 APK、APKS 和 XAPK，按设备选择分包，并在安装前检查 Android 版本和 CPU 架构。',
+      ],
+      achievements: ['卸载前重新核对目标设备上的完整包名和应用类型，防止误删系统应用。'],
+    },
+    {
+      id: 'ai-subscription-store',
+      name: 'AI 订阅商城',
+      category: '数字商品交易',
+      role: '个人项目 / 全栈开发',
+      technologies: ['React', 'TypeScript', 'Fastify', 'SQLite'],
+      summary: '开发 AI 订阅兑换码商城，支持套餐选购、会员与游客查单，以及到账后领取兑换码。',
+      responsibilities: [
+        '用 SQLite 事务管理订单与兑换码库存，下单时预留、超时释放，确认到账时分配兑换码并更新订单。',
+        '按流水号去重，用收款账户、金额和付款时间匹配订单。唯一匹配时发货，多笔候选转人工复核。',
+      ],
+      achievements: ['在本地用真实到账记录重放，验证了按时付款、账单延迟到达时的补发流程。'],
+    },
     {
       id: 'kol-scout',
       name: 'KOL Scout',
